@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8343196480343424971}
   - component: {fileID: 7858325523785746867}
+  - component: {fileID: 813305590942037592}
+  - component: {fileID: 2545132375854538473}
   m_Layer: 0
   m_Name: TrayYellow_Medium
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8347148425525506789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.4, y: -24.8, z: 0}
+  m_LocalPosition: {x: -3.025, y: -4.75, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2141926215, guid: 1072186489761ea4dba9fd97b6697eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,3 +86,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &813305590942037592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347148425525506789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60126dfcd00cca48a583091ebaf9a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrayType: 1
+  OriginCell: {x: 0, y: 3}
+  Layer: 0
+  _isCovered: 0
+  _hideSprite: {fileID: 807252610, guid: 7a8f9b0a7e300674381c28b2cbc275f5, type: 3}
+  _coveredColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+--- !u!114 &2545132375854538473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347148425525506789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a032fa11e12c116469506359d1fdf001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tray: {fileID: 813305590942037592}

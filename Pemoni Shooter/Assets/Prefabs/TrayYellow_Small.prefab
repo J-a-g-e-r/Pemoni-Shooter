@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3844142643877179801}
   - component: {fileID: 32554151327506684}
+  - component: {fileID: 5891246521883355671}
+  - component: {fileID: 4051060871398302386}
   m_Layer: 0
   m_Name: TrayYellow_Small
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3451911829237863060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.68, z: 0}
+  m_LocalPosition: {x: -2.55, y: -3, z: -1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -84,3 +86,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5891246521883355671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451911829237863060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60126dfcd00cca48a583091ebaf9a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrayType: 0
+  OriginCell: {x: 1, y: 7}
+  Layer: 1
+  _isCovered: 0
+  _hideSprite: {fileID: 233303598, guid: 9ae86deeb61d0f2448685fa5bdb7b386, type: 3}
+  _coveredColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+--- !u!114 &4051060871398302386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451911829237863060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a032fa11e12c116469506359d1fdf001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tray: {fileID: 5891246521883355671}

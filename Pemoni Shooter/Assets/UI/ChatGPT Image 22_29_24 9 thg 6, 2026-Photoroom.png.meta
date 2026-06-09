@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22753e768a04c504db833b6f17bd46a4
+guid: 9ae86deeb61d0f2448685fa5bdb7b386
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 108
+  spritePixelsToUnits: 94
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tray-blue-small
+      name: ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 290
-        width: 354
-        height: 369
+        x: 83
+        y: 345
+        width: 313
+        height: 333
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34c447d68b256a34ba401869a03a96f2
-      internalID: 2086619026
+      spriteID: 5019fc7a777ee5849a44775efefbfdba
+      internalID: 880514244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tray-yellow-small
+      name: ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_1
       rect:
         serializedVersion: 2
-        x: 447
-        y: 287
-        width: 353
-        height: 371
+        x: 460
+        y: 345
+        width: 311
+        height: 333
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aec888e215d1b34298f7c2c47f4cf95
-      internalID: -122045223
+      spriteID: 8c032870a7f0f354ba3e84fe32dbe22d
+      internalID: 233303598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tray-red-small
+      name: ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_2
       rect:
         serializedVersion: 2
-        x: 861
-        y: 287
-        width: 352
-        height: 371
+        x: 834
+        y: 345
+        width: 317
+        height: 334
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52aa131a39fa46949bca5ae362724585
-      internalID: 1839506673
+      spriteID: 496301e04c6511a4eaf002eac9d9aedc
+      internalID: 14486922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tray-pink-small
+      name: ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_3
       rect:
         serializedVersion: 2
-        x: 1274
-        y: 286
-        width: 352
-        height: 373
+        x: 1214
+        y: 345
+        width: 310
+        height: 334
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64aee45e0d8cae540bf8b441098125e3
-      internalID: -1676321170
+      spriteID: 675c9000a0732094d93fe54d1ace4cba
+      internalID: 2133138308
       vertices: []
       indices: 
       edges: []
@@ -209,7 +209,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5a777d7c4a2988c458d2ae9e6ffad1bd
+    spriteID: 777c45e95979c44429de726d8de6d85f
     internalID: 0
     vertices: []
     indices: 
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tray-blue-small: 2086619026
-      tray-pink-small: -1676321170
-      tray-red-small: 1839506673
-      tray-yellow-small: -122045223
+      ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_0: 880514244
+      ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_1: 233303598
+      ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_2: 14486922
+      ChatGPT Image 22_29_24 9 thg 6, 2026-Photoroom_3: 2133138308
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

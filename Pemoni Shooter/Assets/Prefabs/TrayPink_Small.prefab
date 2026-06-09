@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5886601636221976064}
   - component: {fileID: 2178797282354409938}
+  - component: {fileID: 3979266057703601571}
+  - component: {fileID: 7137078659970837628}
   m_Layer: 0
   m_Name: TrayPink_Small
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6180583064365056594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.44, z: 0}
+  m_LocalPosition: {x: -2.075, y: -3.5, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1676321170, guid: 22753e768a04c504db833b6f17bd46a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,3 +86,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3979266057703601571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180583064365056594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60126dfcd00cca48a583091ebaf9a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrayType: 0
+  OriginCell: {x: 2, y: 6}
+  Layer: 0
+  _isCovered: 0
+  _hideSprite: {fileID: 2133138308, guid: 9ae86deeb61d0f2448685fa5bdb7b386, type: 3}
+  _coveredColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+--- !u!114 &7137078659970837628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180583064365056594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a032fa11e12c116469506359d1fdf001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tray: {fileID: 3979266057703601571}
