@@ -2,5 +2,8 @@ public enum TrayType
 {
     Small,
     Medium,
-    Large   
+    Large,
+    Medium_Horizontal,
+    Large_Horizontal
+
 }

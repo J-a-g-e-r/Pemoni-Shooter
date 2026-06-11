@@ -12,6 +12,7 @@ public class Tray : MonoBehaviour
     private bool _isCovered;
 
     [Header("UI")]
+    [SerializeField] private Sprite _originSprite; // Lưu lại sprite gốc ban đầu lúc Awake
     [SerializeField] private Sprite _hideSprite;
     [SerializeField] private Color _coveredColor = new(205f / 255f, 205f / 255f, 205f / 255f, 1f);
 
@@ -20,19 +21,38 @@ public class Tray : MonoBehaviour
         get => _isCovered;
         set
         {
+            bool wasCovered = _isCovered;
             _isCovered = value;
+
+            // Trigger animation khi tray được lộ ra (covered → uncovered)
+            if (wasCovered && !_isCovered)
+            {
+                PlayUncoverAnimation();
+            }
+
             UpdateVisual();
+        }
+    }
+
+    private void PlayUncoverAnimation()
+    {
+        if (_animator != null && _animator.isActiveAndEnabled)
+        {
+            _animator.SetTrigger(UncoverHash);
         }
     }
 
     public bool CanClick => !_isCovered;
 
     private SpriteRenderer _renderer;
-    private Sprite _originSprite; // Lưu lại sprite gốc ban đầu lúc Awake
+    private Animator _animator;
+
+    private static readonly int UncoverHash = Animator.StringToHash("Uncover");
 
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         if (_renderer != null)
         {
             _originSprite = _renderer.sprite; // Lưu giữ sprite gốc
@@ -43,6 +63,12 @@ public class Tray : MonoBehaviour
     {
         UpdateVisual();
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //        OnMouseDown();
+    //}
 
     public void UpdateVisual()
     {
@@ -85,6 +111,7 @@ public class Tray : MonoBehaviour
             return;
 
         GridMapManager.Instance.RemoveTray(this);
+        Debug.Log("Clicked on Tray at cell: " + OriginCell + " of type: " + TrayType.ToString());
     }
 
     private void OnValidate()
@@ -94,6 +121,13 @@ public class Tray : MonoBehaviour
         // Đoạn này giúp trong Editor không bị mất Sprite khi bạn test OnValidate
         if (_originSprite == null && _renderer != null) _originSprite = _renderer.sprite;
 
-        UpdateVisual();
+
+        // Cập nhật vị trí trên editor
+        GridPositioner positioner = GetComponent<GridPositioner>();
+        if (positioner != null)
+        {
+            positioner.UpdatePosition();
+            UpdateVisual();
+        }
     }
 }

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tray_Small
+  m_Controller: {fileID: 9100000, guid: c0c39f7d0f5134e4aabe5ce9c462dc50, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7397fc8eb94a64d48a3b15ad111e9639, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7397fc8eb94a64d48a3b15ad111e9639, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c1f29af1c13c0bf4bbcba775c6cceec4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 77d3674d18a20ff43905583e3bec7ed0, type: 2}

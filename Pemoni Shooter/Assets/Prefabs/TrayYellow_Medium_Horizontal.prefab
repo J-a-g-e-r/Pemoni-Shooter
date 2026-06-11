@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 813305590942037592}
   - component: {fileID: 2545132375854538473}
   - component: {fileID: 6776433819720215509}
-  - component: {fileID: -9012977137990024539}
+  - component: {fileID: -6416974475517512595}
   m_Layer: 0
-  m_Name: TrayYellow_Medium
+  m_Name: TrayYellow_Medium_Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8347148425525506789}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.325, y: -4.75, z: -1}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -3.0875, y: -5, z: -1}
+  m_LocalScale: {x: 0.315, y: 0.28, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &7858325523785746867
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60126dfcd00cca48a583091ebaf9a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrayType: 1
+  TrayType: 3
   OriginCell: {x: 0, y: 3}
   Layer: 1
   _isCovered: 0
@@ -165,7 +165,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2190475, y: 5.0761905}
   m_EdgeRadius: 0
---- !u!95 &-9012977137990024539
+--- !u!95 &-6416974475517512595
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Animator:
   m_GameObject: {fileID: 8347148425525506789}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 4e83190301180d44cabf731bcb6ae096, type: 2}
+  m_Controller: {fileID: 22100000, guid: 44b19c036dec52b4f9721a21ea82d565, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
