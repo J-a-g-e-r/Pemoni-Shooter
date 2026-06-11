@@ -42,10 +42,14 @@ public class Tray : MonoBehaviour
         }
     }
 
-    public bool CanClick => !_isCovered;
+    /// Tray đang bay thì không cho click tray khác
+    public static bool AnyTrayFlying { get; private set; }
+
+    public bool CanClick => !_isCovered && !AnyTrayFlying && !TableSlotManager.Instance.IsFull;
 
     private SpriteRenderer _renderer;
     private Animator _animator;
+    private TrayFlyAnim _flyAnim;
 
     private static readonly int UncoverHash = Animator.StringToHash("Uncover");
 
@@ -53,6 +57,7 @@ public class Tray : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _flyAnim = GetComponent<TrayFlyAnim>();
         if (_renderer != null)
         {
             _originSprite = _renderer.sprite; // Lưu giữ sprite gốc
@@ -107,10 +112,43 @@ public class Tray : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!CanClick)
-            return;
+        if (!CanClick) return;
 
-        GridMapManager.Instance.RemoveTray(this);
+        // Lấy slot tiếp theo trên bàn
+        TableSlot slot = TableSlotManager.Instance.GetNextEmptySlot();
+        if (slot == null) return; // Bàn đầy
+
+        // Xóa khỏi grid ngay lập tức để RefreshCoveredState chạy đúng
+        GridMapManager.Instance.UnregisterTray(this);
+        GridMapManager.Instance.RefreshCoveredState();
+
+        // Lock click toàn bộ tray trong lúc bay
+        AnyTrayFlying = true;
+
+        // Disable collider để không bị click lại
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+
+        // Bay vào slot
+        if (_flyAnim != null)
+        {
+            _flyAnim.FlyToSlot(slot, () =>
+            {
+                TableSlotManager.Instance.OccupySlot(slot);
+                AnyTrayFlying = false;
+                //Destroy(gameObject);
+            });
+        }
+        else
+        {
+            // Fallback nếu không có TrayFlyAnimation
+            transform.position = slot.WorldPosition;
+            transform.rotation = slot.WorldRotation;
+            TableSlotManager.Instance.OccupySlot(slot);
+            AnyTrayFlying = false;
+            Destroy(gameObject);
+        }
+
         Debug.Log("Clicked on Tray at cell: " + OriginCell + " of type: " + TrayType.ToString());
     }
 

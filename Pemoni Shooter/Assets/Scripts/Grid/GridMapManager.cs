@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GridMapManager : MonoBehaviour
@@ -119,6 +119,22 @@ public class GridMapManager : MonoBehaviour
     #endregion
 
     #region Remove
+
+    /// Xóa tray khỏi grid + danh sách nhưng KHÔNG Destroy GameObject.
+    /// Dùng khi tray đang bay vào slot (Destroy sau khi animation kết thúc).
+    public void UnregisterTray(Tray tray)
+    {
+        var shape = TrayShapeUtility.GetShape(tray.TrayType);
+
+        foreach (var offset in shape)
+        {
+            Vector2Int cell = tray.OriginCell + offset;
+            Vector3Int key = new Vector3Int(cell.x, cell.y, tray.Layer);
+            _grid.Remove(key);
+        }
+
+        _allTrays.Remove(tray);
+    }
 
     public void RemoveTray(Tray tray)
     {
