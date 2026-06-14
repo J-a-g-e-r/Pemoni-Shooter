@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// Gắn vào GameObject Table.
-/// Tự động tìm tất cả TableSlot con và quản lý thứ tự điền từ trái sang phải.
+/// Quản lý các TableSlot và Tray đang ngồi trên bàn.
 /// </summary>
 public class TableSlotManager : MonoBehaviour
 {
@@ -13,9 +13,10 @@ public class TableSlotManager : MonoBehaviour
     [Tooltip("Để trống thì tự động lấy tất cả TableSlot con theo thứ tự từ trái sang phải")]
     [SerializeField] private List<TableSlot> _slots = new();
 
-    // Số slot hiện đang bị chiếm
-    private int _occupiedCount;
+    // Map: TableSlot → Tray đang ngồi ở slot đó
+    private readonly Dictionary<TableSlot, Tray> _slotToTray = new();
 
+    private int _occupiedCount;
     public bool IsFull => _occupiedCount >= _slots.Count;
 
     // -------------------------------------------------------
@@ -26,10 +27,9 @@ public class TableSlotManager : MonoBehaviour
         AutoCollectSlots();
     }
 
-    /// Tự động thu thập và sắp xếp slot theo vị trí X (trái → phải)
     private void AutoCollectSlots()
     {
-        if (_slots.Count > 0) return; // Đã assign tay trong Inspector thì thôi
+        if (_slots.Count > 0) return;
 
         _slots.Clear();
         foreach (Transform child in transform)
@@ -39,16 +39,13 @@ public class TableSlotManager : MonoBehaviour
                 _slots.Add(slot);
         }
 
-        // Sắp xếp trái → phải theo worldPosition.x
         _slots.Sort((a, b) => a.WorldPosition.x.CompareTo(b.WorldPosition.x));
     }
 
     // -------------------------------------------------------
+    // Slot operations
 
-    /// <summary>
-    /// Lấy slot trống tiếp theo (trái → phải).
-    /// Trả về null nếu đã đầy.
-    /// </summary>
+    /// <summary>Lấy slot trống tiếp theo (trái → phải).</summary>
     public TableSlot GetNextEmptySlot()
     {
         foreach (var slot in _slots)
@@ -60,13 +57,54 @@ public class TableSlotManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Đánh dấu slot là đã có Tray.
-    /// Gọi sau khi animation bay vào hoàn tất.
+    /// Đánh dấu slot đã có Tray.
+    /// Lưu reference để sau tìm theo màu.
     /// </summary>
-    public void OccupySlot(TableSlot slot)
+    public void OccupySlot(TableSlot slot, Tray tray)
     {
         slot.IsOccupied = true;
+        _slotToTray[slot] = tray;
         _occupiedCount++;
+    }
+
+    /// <summary>
+    /// Giải phóng slot khi Tray đầy và biến mất.
+    /// </summary>
+    public void FreeSlotOf(Tray tray)
+    {
+        foreach (var slot in _slots)
+        {
+            if (_slotToTray.TryGetValue(slot, out Tray occupant) && occupant == tray)
+            {
+                slot.IsOccupied = false;
+                _slotToTray.Remove(slot);
+                _occupiedCount--;
+                return;
+            }
+        }
+    }
+
+    // -------------------------------------------------------
+    // Color lookup
+
+    /// <summary>
+    /// Tìm Tray đầu tiên trên bàn có màu <paramref name="color"/> và còn CupSlot trống.
+    /// Ưu tiên tray vào bàn trước (theo thứ tự slot trái → phải).
+    /// Trả về null nếu không tìm thấy.
+    /// </summary>
+    public Tray GetTrayByColor(TrayColor color)
+    {
+        foreach (var slot in _slots)
+        {
+            if (!slot.IsOccupied) continue;
+            if (!_slotToTray.TryGetValue(slot, out Tray tray)) continue;
+            if (tray == null) continue;
+            if (tray.TrayColor != color) continue;
+            if (tray.GetNextEmptyCupSlot() == null) continue; // Tray đầy rồi
+
+            return tray;
+        }
+        return null;
     }
 
     // -------------------------------------------------------

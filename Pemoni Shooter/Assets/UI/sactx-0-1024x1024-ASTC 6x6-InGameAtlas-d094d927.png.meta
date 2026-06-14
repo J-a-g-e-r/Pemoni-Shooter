@@ -194,7 +194,7 @@ TextureImporter:
         width: 117
         height: 43
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,90 @@ TextureImporter:
       bones: []
       spriteID: 9f7a0d8033f322c48a17058456091603
       internalID: 1125700443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_0
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 845
+        width: 54
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcb0b95cdb52fc4790737071563058a
+      internalID: -583052778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_1
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 761
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f284431b9c411e4b823cc493a6bcf53
+      internalID: 1601555259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_2
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 561
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5993f7bceda9054418b886b918ef5a49
+      internalID: 1420210971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_3
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 67
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8592ec70f674b4080f07b2bf70a676
+      internalID: -933235670
       vertices: []
       indices: 
       edges: []
@@ -217,6 +301,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_0: -583052778
+      sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_1: 1601555259
+      sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_2: 1420210971
+      sactx-0-1024x1024-ASTC 6x6-InGameAtlas-d094d927_3: -933235670
       spawn cup: 1125700443
       table: -1314562575
       tray-blue: -2132668489

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine;
 
 public class Tray : MonoBehaviour
 {
@@ -7,14 +9,32 @@ public class Tray : MonoBehaviour
     public Vector2Int OriginCell;
     public int Layer;
 
+    [Header("Color")]
+    public TrayColor TrayColor;
+
+    [Header("Cup Slots")]
+    [Tooltip("Tự động thu thập tất cả CupSlot con nếu để trống")]
+    [SerializeField] private List<CupSlot> _cupSlots = new();
+
+    /// Số cốc khay có thể đựng = số cell trong shape
+    public int Capacity => TrayShapeUtility.GetShape(TrayType)?.Length ?? 0;
+
+    private int _filledCount;
+    public bool IsTrayFull => _filledCount >= Capacity;
+
+    // -------------------------------------------------------
+
     [Header("Runtime")]
     [SerializeField]
     private bool _isCovered;
 
     [Header("UI")]
-    [SerializeField] private Sprite _originSprite; // Lưu lại sprite gốc ban đầu lúc Awake
+    [SerializeField] private Sprite _originSprite;
     [SerializeField] private Sprite _hideSprite;
     [SerializeField] private Color _coveredColor = new(205f / 255f, 205f / 255f, 205f / 255f, 1f);
+
+    [Header("Disappear")]
+    [SerializeField] private float _disappearDuration = 0.25f;
 
     public bool IsCovered
     {
@@ -24,11 +44,8 @@ public class Tray : MonoBehaviour
             bool wasCovered = _isCovered;
             _isCovered = value;
 
-            // Trigger animation khi tray được lộ ra (covered → uncovered)
             if (wasCovered && !_isCovered)
-            {
                 PlayUncoverAnimation();
-            }
 
             UpdateVisual();
         }
@@ -37,12 +54,9 @@ public class Tray : MonoBehaviour
     private void PlayUncoverAnimation()
     {
         if (_animator != null && _animator.isActiveAndEnabled)
-        {
             _animator.SetTrigger(UncoverHash);
-        }
     }
 
-    /// Tray đang bay thì không cho click tray khác
     public static bool AnyTrayFlying { get; private set; }
 
     public bool CanClick => !_isCovered && !AnyTrayFlying && !TableSlotManager.Instance.IsFull;
@@ -53,15 +67,18 @@ public class Tray : MonoBehaviour
 
     private static readonly int UncoverHash = Animator.StringToHash("Uncover");
 
+    // -------------------------------------------------------
+
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _flyAnim = GetComponent<TrayFlyAnim>();
+
         if (_renderer != null)
-        {
-            _originSprite = _renderer.sprite; // Lưu giữ sprite gốc
-        }
+            _originSprite = _renderer.sprite;
+
+        AutoCollectCupSlots();
     }
 
     private void Start()
@@ -69,98 +86,135 @@ public class Tray : MonoBehaviour
         UpdateVisual();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //        OnMouseDown();
-    //}
+    // -------------------------------------------------------
+    // CupSlot management
 
-    public void UpdateVisual()
+    private void AutoCollectCupSlots()
     {
-        if (_renderer == null)
-            return;
+        if (_cupSlots.Count > 0) return; // Đã assign tay trong Inspector
 
-        // ĐỒNG BỘ LAYER
-        _renderer.sortingOrder = Layer;
-
-        // CẬP NHẬT HÌNH ẢNH & MÀU SẮC
-        if (IsCovered)
+        _cupSlots.Clear();
+        foreach (Transform child in transform)
         {
-            // Nếu có sprite ẩn riêng thì đổi, nếu không thì giữ nguyên sprite gốc nhưng đổi màu tối
-            if (_hideSprite != null)
-            {
-                _renderer.sprite = _hideSprite;
-            }
-
-            // Đổi màu thành màu xám tối (giống như trong ảnh bạn cấu hình)
-            _renderer.color = _coveredColor;
-
-            //Color c = Color.white;
-            //c.a = CanClick ? 1f : 0.5f;
-            //_renderer.color = c;
-        }
-        else
-        {
-            // Khi không bị che: Trả lại sprite gốc và màu trắng nguyên bản
-            if (_originSprite != null)
-            {
-                _renderer.sprite = _originSprite;
-            }
-            _renderer.color = Color.white;
+            var slot = child.GetComponent<CupSlot>();
+            if (slot != null)
+                _cupSlots.Add(slot);
         }
     }
+
+    /// <summary>
+    /// Lấy CupSlot trống tiếp theo (theo thứ tự list).
+    /// Trả về null nếu khay đã đầy.
+    /// </summary>
+    public CupSlot GetNextEmptyCupSlot()
+    {
+        foreach (var slot in _cupSlots)
+        {
+            if (!slot.IsOccupied)
+                return slot;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Gọi sau khi Cup bay vào slot thành công.
+    /// </summary>
+    public void ReceiveCup(Cup cup)
+    {
+        _filledCount++;
+        cup.transform.SetParent(transform); // Cup là con của Tray
+
+        if (IsTrayFull)
+            OnFullFilled();
+    }
+
+    /// <summary>
+    /// Gọi khi khay đầy: giải phóng TableSlot, scale về 0 rồi Destroy.
+    /// </summary>
+    private void OnFullFilled()
+    {
+        Debug.Log($"[Tray] {name} đầy! Biến mất.");
+
+        // Giải phóng TableSlot ngay để có thể đón Tray mới
+        TableSlotManager.Instance.FreeSlotOf(this);
+
+        // DOTween scale về 0 rồi Destroy
+        transform
+            .DOScale(Vector3.zero, _disappearDuration)
+            .SetEase(Ease.InBack)
+            .OnComplete(() => Destroy(gameObject));
+    }
+
+    // -------------------------------------------------------
+    // Click
 
     private void OnMouseDown()
     {
         if (!CanClick) return;
 
-        // Lấy slot tiếp theo trên bàn
         TableSlot slot = TableSlotManager.Instance.GetNextEmptySlot();
-        if (slot == null) return; // Bàn đầy
+        if (slot == null) return;
 
-        // Xóa khỏi grid ngay lập tức để RefreshCoveredState chạy đúng
+        // Xóa khỏi grid ngay để RefreshCoveredState đúng
         GridMapManager.Instance.UnregisterTray(this);
         GridMapManager.Instance.RefreshCoveredState();
 
-        // Lock click toàn bộ tray trong lúc bay
         AnyTrayFlying = true;
 
-        // Disable collider để không bị click lại
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
 
-        // Bay vào slot
         if (_flyAnim != null)
         {
             _flyAnim.FlyToSlot(slot, () =>
             {
-                TableSlotManager.Instance.OccupySlot(slot);
+                TableSlotManager.Instance.OccupySlot(slot, this);
                 AnyTrayFlying = false;
-                //Destroy(gameObject);
+
+                // Thông báo CupQueue kiểm tra dispatch
+                CupQueue.Instance.TryDispatchFront();
             });
         }
         else
         {
-            // Fallback nếu không có TrayFlyAnimation
             transform.position = slot.WorldPosition;
             transform.rotation = slot.WorldRotation;
-            TableSlotManager.Instance.OccupySlot(slot);
+            TableSlotManager.Instance.OccupySlot(slot, this);
             AnyTrayFlying = false;
-            Destroy(gameObject);
+            CupQueue.Instance.TryDispatchFront();
         }
 
-        Debug.Log("Clicked on Tray at cell: " + OriginCell + " of type: " + TrayType.ToString());
+        Debug.Log($"Clicked on Tray at cell: {OriginCell} of type: {TrayType} color: {TrayColor}");
+    }
+
+    // -------------------------------------------------------
+    // Visual
+
+    public void UpdateVisual()
+    {
+        if (_renderer == null) return;
+
+        _renderer.sortingOrder = Layer;
+
+        if (IsCovered)
+        {
+            if (_hideSprite != null)
+                _renderer.sprite = _hideSprite;
+            _renderer.color = _coveredColor;
+        }
+        else
+        {
+            if (_originSprite != null)
+                _renderer.sprite = _originSprite;
+            _renderer.color = Color.white;
+        }
     }
 
     private void OnValidate()
     {
         if (_renderer == null) _renderer = GetComponent<SpriteRenderer>();
-
-        // Đoạn này giúp trong Editor không bị mất Sprite khi bạn test OnValidate
         if (_originSprite == null && _renderer != null) _originSprite = _renderer.sprite;
 
-
-        // Cập nhật vị trí trên editor
         GridPositioner positioner = GetComponent<GridPositioner>();
         if (positioner != null)
         {

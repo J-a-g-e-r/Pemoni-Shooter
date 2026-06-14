@@ -7,3 +7,16 @@ public enum TrayType
     Large_Horizontal
 
 }
+
+
+public enum TrayColor
+{
+    Red,
+    Blue,
+    Yellow,
+    Pink,
+    Green,
+    Purple,
+    Orange,
+    Brown
+}
