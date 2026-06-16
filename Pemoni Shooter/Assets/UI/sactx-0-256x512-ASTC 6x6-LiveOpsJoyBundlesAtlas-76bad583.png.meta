@@ -121,18 +121,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-256x512-ASTC 6x6-LiveOpsJoyBundlesAtlas-76bad583_0
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 454
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f46b0e23002f2c4e936bf2b3a0759ad
+      internalID: 143275569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f30dc274036bcfe4d809f2ab60bd02a1
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sactx-0-256x512-ASTC 6x6-LiveOpsJoyBundlesAtlas-76bad583_0: 143275569
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
