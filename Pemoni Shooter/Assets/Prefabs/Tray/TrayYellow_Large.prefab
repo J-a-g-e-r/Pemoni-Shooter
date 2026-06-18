@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 7333736432546235370}
   - component: {fileID: 4354092370941568934}
   - component: {fileID: 6753057900513866876}
+  - component: {fileID: -7101532329798693040}
   m_Layer: 0
   m_Name: TrayYellow_Large
   m_TagString: Untagged
@@ -372,6 +373,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7101532329798693040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225429453681759541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e47f8bcc22c9142916de43f02cf2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tiltDuration: 0.12
+  _flyDuration: 0.3
+  _snapDuration: 0.2
+  _tiltAngleZ: 30
+  _flyEase: 7
+  _tiltEase: 6
+  _snapEase: 6
+  _liftDuration: 0.2
+  _liftHeight: -0.5
+  _exitDuration: 0.45
+  _exitExtraMargin: 2
+  _liftEase: 6
+  _exitEase: 5
 --- !u!1 &5482469264359162088
 GameObject:
   m_ObjectHideFlags: 0

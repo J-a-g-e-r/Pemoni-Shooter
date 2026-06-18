@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Gắn vào GameObject Table.
 /// Quản lý các TableSlot và Tray đang ngồi trên bàn.
+/// Hiển thị warning ở slot cuối cùng còn trống.
 /// </summary>
 public class TableSlotManager : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class TableSlotManager : MonoBehaviour
     [Tooltip("Để trống thì tự động lấy tất cả TableSlot con theo thứ tự từ trái sang phải")]
     [SerializeField] private List<TableSlot> _slots = new();
 
-    // Map: TableSlot → Tray đang ngồi ở slot đó
     private readonly Dictionary<TableSlot, Tray> _slotToTray = new();
 
     private int _occupiedCount;
     public bool IsFull => _occupiedCount >= _slots.Count;
+
+    // Số slot trống hiện tại
+    public int EmptyCount => _slots.Count - _occupiedCount;
 
     // -------------------------------------------------------
 
@@ -43,9 +46,7 @@ public class TableSlotManager : MonoBehaviour
     }
 
     // -------------------------------------------------------
-    // Slot operations
 
-    /// <summary>Lấy slot trống tiếp theo (trái → phải).</summary>
     public TableSlot GetNextEmptySlot()
     {
         foreach (var slot in _slots)
@@ -56,20 +57,16 @@ public class TableSlotManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
-    /// Đánh dấu slot đã có Tray.
-    /// Lưu reference để sau tìm theo màu.
-    /// </summary>
     public void OccupySlot(TableSlot slot, Tray tray)
     {
         slot.IsOccupied = true;
         _slotToTray[slot] = tray;
         _occupiedCount++;
+
+        // Sau khi chiếm slot, kiểm tra còn lại bao nhiêu slot trống
+        CheckLastSlotWarning();
     }
 
-    /// <summary>
-    /// Giải phóng slot khi Tray đầy và biến mất.
-    /// </summary>
     public void FreeSlotOf(Tray tray)
     {
         foreach (var slot in _slots)
@@ -79,19 +76,37 @@ public class TableSlotManager : MonoBehaviour
                 slot.IsOccupied = false;
                 _slotToTray.Remove(slot);
                 _occupiedCount--;
+
+                // Slot vừa giải phóng → tắt warning ở slot đó (nếu có)
+                slot.HideWarning();
                 return;
             }
         }
     }
 
     // -------------------------------------------------------
-    // Color lookup
+    // Warning logic
 
     /// <summary>
-    /// Tìm Tray đầu tiên trên bàn có màu <paramref name="color"/> và còn CupSlot trống.
-    /// Ưu tiên tray vào bàn trước (theo thứ tự slot trái → phải).
-    /// Trả về null nếu không tìm thấy.
+    /// Nếu chỉ còn đúng 1 slot trống → hiện warning ở slot đó trong 2 giây.
     /// </summary>
+    private void CheckLastSlotWarning()
+    {
+        if (EmptyCount != 1) return;
+
+        // Tìm slot trống duy nhất còn lại
+        foreach (var slot in _slots)
+        {
+            if (!slot.IsOccupied)
+            {
+                slot.ShowWarning();
+                return;
+            }
+        }
+    }
+
+    // -------------------------------------------------------
+
     public Tray GetTrayByColor(TrayColor color)
     {
         foreach (var slot in _slots)
@@ -100,8 +115,7 @@ public class TableSlotManager : MonoBehaviour
             if (!_slotToTray.TryGetValue(slot, out Tray tray)) continue;
             if (tray == null) continue;
             if (tray.TrayColor != color) continue;
-            if (tray.GetNextEmptyCupSlot() == null) continue; // Tray đầy rồi
-
+            if (tray.GetNextEmptyCupSlot() == null) continue;
             return tray;
         }
         return null;

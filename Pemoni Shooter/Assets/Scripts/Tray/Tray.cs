@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -34,7 +35,8 @@ public class Tray : MonoBehaviour
     [SerializeField] private Color _coveredColor = new(205f / 255f, 205f / 255f, 205f / 255f, 1f);
 
     [Header("Disappear")]
-    [SerializeField] private float _disappearDuration = 0.25f;
+    [Tooltip("Thời gian chờ sau khi bay ra khỏi màn hình trước khi Destroy")]
+    [SerializeField] private float _disappearDuration = 2f;
 
     public bool IsCovered
     {
@@ -59,7 +61,7 @@ public class Tray : MonoBehaviour
 
     public static bool AnyTrayFlying { get; private set; }
 
-    public bool CanClick => !_isCovered && !AnyTrayFlying && !TableSlotManager.Instance.IsFull;
+    public bool CanClick => !_isCovered && !AnyTrayFlying && !TableSlotManager.Instance.IsFull && (TutorialManager.Instance == null || TutorialManager.Instance.CanClickTray(this));
 
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -125,11 +127,20 @@ public class Tray : MonoBehaviour
         cup.transform.SetParent(transform); // Cup là con của Tray
 
         if (IsTrayFull)
+        {
             OnFullFilled();
+            ComboManager.Instance.OnTrayFilled();
+            MoneyManager.Instance.OnTrayCompleted(transform);
+        }
+        //else
+        //{
+        //    ComboManager.Instance.OnNonFillingCupReceived();
+        //}
     }
 
     /// <summary>
-    /// Gọi khi khay đầy: giải phóng TableSlot, scale về 0 rồi Destroy.
+    /// Gọi khi khay đầy: giải phóng TableSlot, nhấc khay lên rồi bay ra
+    /// ngoài màn hình bên phải, đợi <see cref="_disappearDuration"/> giây rồi Destroy.
     /// </summary>
     private void OnFullFilled()
     {
@@ -137,12 +148,31 @@ public class Tray : MonoBehaviour
 
         // Giải phóng TableSlot ngay để có thể đón Tray mới
         TableSlotManager.Instance.FreeSlotOf(this);
+        // Tắt collider để không bị click trong lúc bay đi
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
 
-        // DOTween scale về 0 rồi Destroy
-        transform
-            .DOScale(Vector3.zero, _disappearDuration)
-            .SetEase(Ease.InBack)
-            .OnComplete(() => Destroy(gameObject));
+        if (_flyAnim != null)
+        {
+            _flyAnim.PlayDisappearAnim(() =>
+            {
+                StartCoroutine(DestroyAfterDelay(_disappearDuration));
+            });
+        }
+        else
+        {
+            // Fallback nếu không có TrayFlyAnim: giữ hành vi scale cũ
+            transform
+                .DOScale(Vector3.zero, 0.25f)
+                .SetEase(Ease.InBack)
+                .OnComplete(() => Destroy(gameObject));
+        }
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 
     // -------------------------------------------------------
@@ -184,6 +214,7 @@ public class Tray : MonoBehaviour
             CupQueue.Instance.TryDispatchFront();
         }
 
+        TutorialManager.Instance?.OnTrayClicked(this);
         Debug.Log($"Clicked on Tray at cell: {OriginCell} of type: {TrayType} color: {TrayColor}");
     }
 

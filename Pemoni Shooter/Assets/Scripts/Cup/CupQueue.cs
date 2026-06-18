@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -156,6 +157,7 @@ public class CupQueue : MonoBehaviour
         {
             // Không match → kiểm tra thua
             GameManager.Instance.CheckLose();
+            ComboManager.Instance.OnNonFillingCupReceived();
             return;
         }
 
@@ -185,7 +187,8 @@ public class CupQueue : MonoBehaviour
             // Kiểm tra thắng
             if (TotalRemaining == 0)
             {
-                GameManager.Instance.OnWin();
+                StartCoroutine(WaitForCheckWin());
+                //GameManager.Instance.OnWin();
                 return;
             }
 
@@ -197,6 +200,12 @@ public class CupQueue : MonoBehaviour
     }
 
     // -------------------------------------------------------
+
+    private IEnumerator WaitForCheckWin()
+    {
+        yield return new WaitForSeconds(1f);
+        GameManager.Instance.OnWin();
+    }
 
     private void ShiftQueue()
     {

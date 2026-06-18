@@ -3,8 +3,9 @@ using UnityEngine;
 
 /// <summary>
 /// Gắn vào GameObject bất kỳ trong scene (ví dụ: GameManager).
-/// Tính tổng capacity của tất cả Tray, tạo đúng số lượng Cup tương ứng,
-/// shuffle ngẫu nhiên rồi nạp vào CupQueue.
+/// Tính tổng capacity của tất cả Tray, tạo đúng số lượng Cup tương ứng.
+/// Mặc định shuffle ngẫu nhiên; nếu bật Tutorial Mode thì xếp theo thứ tự
+/// màu cố định (_tutorialOrder), phần dư còn lại mới random.
 /// </summary>
 public class CupSpawner : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class CupSpawner : MonoBehaviour
     [SerializeField] private GameObject _cupOrangePrefab;
     [SerializeField] private GameObject _cupBrownPrefab;
 
+    [Header("Tutorial Mode")]
+    [Tooltip("Bật để xếp cốc theo đúng thứ tự định trước (dùng cho level tutorial). Tắt = random như cũ.")]
+    [SerializeField] private bool _useTutorialOrder = false;
+
+    [Tooltip("Thứ tự MÀU cốc mong muốn (chỉ định thứ tự, KHÔNG định số lượng — số lượng mỗi màu vẫn lấy từ tổng Capacity của các Tray). " +
+             "Nếu một màu xuất hiện nhiều lần trong list, mỗi lần sẽ 'tiêu' 1 cốc của màu đó theo đúng vị trí. " +
+             "Phần cốc còn dư (không được liệt kê đủ trong list) sẽ được random và nối vào cuối hàng.")]
+    [SerializeField] private List<TrayColor> _tutorialOrder = new();
+
     // -------------------------------------------------------
 
     private void Start()
@@ -26,8 +36,10 @@ public class CupSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Tính capacity từ tất cả Tray hiện có,
-    /// tạo danh sách Cup đúng số lượng + màu, shuffle rồi đưa vào CupQueue.
+    /// Tính capacity từ tất cả Tray hiện có, tạo danh sách Cup đúng số lượng + màu.
+    /// Nếu _useTutorialOrder = true: xếp theo thứ tự cố định trong _tutorialOrder
+    /// (số lượng mỗi màu vẫn theo capacity thật, chỉ thứ tự là cố định; phần dư random).
+    /// Nếu false: random toàn bộ như cũ.
     /// </summary>
     public void SpawnForLevel()
     {
@@ -46,20 +58,10 @@ public class CupSpawner : MonoBehaviour
             colorCount[tray.TrayColor] += cap;
         }
 
-        // 3. Tạo list màu (mỗi phần tử = 1 cốc)
-        var colorList = new List<TrayColor>();
-        foreach (var kv in colorCount)
-        {
-            for (int i = 0; i < kv.Value; i++)
-                colorList.Add(kv.Key);
-        }
-
-        // 4. Shuffle Fisher-Yates
-        for (int i = colorList.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (colorList[i], colorList[j]) = (colorList[j], colorList[i]);
-        }
+        // 3 + 4. Xây danh sách thứ tự màu: Tutorial (cố định) hoặc Normal (random)
+        List<TrayColor> colorList = _useTutorialOrder
+            ? BuildTutorialOrder(colorCount)
+            : BuildShuffledOrder(colorCount);
 
         // 5. Tạo Cup GameObject và đưa vào CupQueue
         var cups = new List<Cup>(colorList.Count);
@@ -90,6 +92,73 @@ public class CupSpawner : MonoBehaviour
 
         // 6. Nạp vào CupQueue
         CupQueue.Instance.Initialize(cups);
+    }
+
+    // -------------------------------------------------------
+
+    /// <summary>
+    /// Logic cũ: tạo list màu theo capacity rồi shuffle Fisher-Yates.
+    /// </summary>
+    private List<TrayColor> BuildShuffledOrder(Dictionary<TrayColor, int> colorCount)
+    {
+        var colorList = new List<TrayColor>();
+        foreach (var kv in colorCount)
+        {
+            for (int i = 0; i < kv.Value; i++)
+                colorList.Add(kv.Key);
+        }
+
+        for (int i = colorList.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (colorList[i], colorList[j]) = (colorList[j], colorList[i]);
+        }
+
+        return colorList;
+    }
+
+    /// <summary>
+    /// Tutorial mode: giữ đúng thứ tự màu đã định nghĩa trong _tutorialOrder.
+    /// Số lượng mỗi màu vẫn lấy từ colorCount (capacity thực tế của Tray).
+    /// _tutorialOrder chỉ quyết định THỨ TỰ xuất hiện, mỗi lần dùng sẽ trừ dần
+    /// số lượng còn lại của màu đó. Cốc dư ra (không được liệt kê đủ) sẽ được
+    /// random và nối vào cuối hàng.
+    /// </summary>
+    private List<TrayColor> BuildTutorialOrder(Dictionary<TrayColor, int> colorCount)
+    {
+        // Copy ra để trừ dần mà không ảnh hưởng dict gốc
+        var remaining = new Dictionary<TrayColor, int>(colorCount);
+        var result = new List<TrayColor>();
+
+        foreach (TrayColor color in _tutorialOrder)
+        {
+            if (remaining.TryGetValue(color, out int left) && left > 0)
+            {
+                result.Add(color);
+                remaining[color] = left - 1;
+            }
+            else
+            {
+                Debug.LogWarning($"[CupSpawner] Tutorial order có màu {color} nhưng không còn cốc màu này trong Tray (hết hoặc không tồn tại). Bỏ qua entry này.");
+            }
+        }
+
+        // Phần dư: random rồi nối vào cuối
+        var leftoverList = new List<TrayColor>();
+        foreach (var kv in remaining)
+        {
+            for (int i = 0; i < kv.Value; i++)
+                leftoverList.Add(kv.Key);
+        }
+
+        for (int i = leftoverList.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (leftoverList[i], leftoverList[j]) = (leftoverList[j], leftoverList[i]);
+        }
+
+        result.AddRange(leftoverList);
+        return result;
     }
 
     // -------------------------------------------------------

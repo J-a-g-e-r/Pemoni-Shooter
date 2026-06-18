@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 6637913979595396361}
   - component: {fileID: 5166529407063596519}
   - component: {fileID: -2058729130509497824}
+  - component: {fileID: -5575849306411105922}
   m_Layer: 0
   m_Name: TrayRed_Large_Horizontal
   m_TagString: Untagged
@@ -507,6 +508,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5575849306411105922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283733877357026866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e47f8bcc22c9142916de43f02cf2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tiltDuration: 0.12
+  _flyDuration: 0.3
+  _snapDuration: 0.2
+  _tiltAngleZ: 30
+  _flyEase: 7
+  _tiltEase: 6
+  _snapEase: 6
+  _liftDuration: 0.2
+  _liftHeight: -0.5
+  _exitDuration: 0.45
+  _exitExtraMargin: 2
+  _liftEase: 6
+  _exitEase: 5
 --- !u!1 &7835367687693968778
 GameObject:
   m_ObjectHideFlags: 0

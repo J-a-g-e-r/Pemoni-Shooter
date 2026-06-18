@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Quản lý trạng thái màn chơi: thắng / thua / UI số cốc còn lại.
@@ -31,12 +32,12 @@ public class GameManager : MonoBehaviour
 
 
 
-    [Header("Win Fireworks Spawn")]
-    [SerializeField] private ParticleSystem _fireworkPrefab;
-    [SerializeField] private RectTransform _fireworkParent;
-    [SerializeField] private RectTransform[] _fireworkSpawnPoints; // gán đúng 5 điểm
-    [SerializeField] private int _fireworksToSpawn = 5;
-    [SerializeField] private float _fireworkSpawnInterval = 0.2f;
+    //[Header("Win Fireworks Spawn")]
+    //[SerializeField] private ParticleSystem _fireworkPrefab;
+    //[SerializeField] private RectTransform _fireworkParent;
+    //[SerializeField] private RectTransform[] _fireworkSpawnPoints; // gán đúng 5 điểm
+    //[SerializeField] private int _fireworksToSpawn = 5;
+    //[SerializeField] private float _fireworkSpawnInterval = 0.2f;
 
 
     private bool _gameOver = false;
@@ -123,6 +124,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(HandleGiveUpFlow());
     }
 
+
+
     private IEnumerator HandleGiveUpFlow()
     {
         if (_outOfSpacePanel != null && _outOfSpacePanel.activeSelf)
@@ -146,6 +149,11 @@ public class GameManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void OpenFadePanel()
