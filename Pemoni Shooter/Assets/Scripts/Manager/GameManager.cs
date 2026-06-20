@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using AudioSystem;
 
 /// <summary>
 /// Quản lý trạng thái màn chơi: thắng / thua / UI số cốc còn lại.
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _outOfSpacePanel;
     [SerializeField] private GameObject _losePanel;
+    [SerializeField] private GameObject _settingPanel;
+
 
     [Header("Timing")]
     [SerializeField] private float _winDelay = 1f;
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
 
 
     private bool _gameOver = false;
+    public bool IsInputBlocked { get; private set; }
 
     private void Awake()
     {
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
         HidePanelInstant(_winPanel);
         HidePanelInstant(_outOfSpacePanel);
         HidePanelInstant(_losePanel);
+        HidePanelInstant(_settingPanel);
     }
 
     public void UpdateCupLeftUI(int remaining)
@@ -67,9 +72,7 @@ public class GameManager : MonoBehaviour
         _gameOver = true;
 
         Debug.Log("[GameManager] WIN!");
-
-
-
+        AudioManager.Instance.PlaySFX("Win");
         //OpenFadePanel();
         PopIn(_congratPanel);
         StartCoroutine(ShowPanelAfterDelay(_winPanel,_winDelay));
@@ -103,7 +106,6 @@ public class GameManager : MonoBehaviour
         {
             _gameOver = true;
             Debug.Log("[GameManager] LOSE!");
-
             OpenFadePanel();
             StartCoroutine(ShowPanelAfterDelay(_outOfSpacePanel, 2f));
         }
@@ -121,9 +123,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnGiveUp()
     {
+        AudioManager.Instance.PlaySFX("Fail");
         StartCoroutine(HandleGiveUpFlow());
     }
 
+    public void OnOpenSettingPanel()
+    {
+        AudioManager.Instance.PlaySFX("Click");
+        IsInputBlocked = true;
+        OpenFadePanel();
+        PopIn(_settingPanel);
+    }
 
 
     private IEnumerator HandleGiveUpFlow()
@@ -160,6 +170,19 @@ public class GameManager : MonoBehaviour
     {
         if (_fadePanel != null)
             _fadePanel.SetActive(true);
+    }
+
+    private void CloseFadePanel()
+    {
+        if (_fadePanel != null)
+            _fadePanel.SetActive(false);
+    }
+
+    public void CloseSettingPanel()
+    {
+        StartCoroutine(PopOut(_settingPanel));
+        CloseFadePanel();
+        IsInputBlocked = false;
     }
 
     private void HidePanelInstant(GameObject panel)

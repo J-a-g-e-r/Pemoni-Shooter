@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using AudioSystem;
 using DG.Tweening;
 using UnityEngine;
 
@@ -61,7 +62,14 @@ public class Tray : MonoBehaviour
 
     public static bool AnyTrayFlying { get; private set; }
 
-    public bool CanClick => !_isCovered && !AnyTrayFlying && !TableSlotManager.Instance.IsFull && (TutorialManager.Instance == null || TutorialManager.Instance.CanClickTray(this));
+    public bool CanClick =>
+        !_isCovered &&
+        !AnyTrayFlying &&
+        !(GameManager.Instance?.IsInputBlocked ?? false) &&
+        !(SkillManager.Instance?.IsGridSwapModeActive ?? false) &&
+        !(SkillManager.Instance?.IsGridSwapping ?? false) &&
+        !TableSlotManager.Instance.IsFull &&
+        (TutorialManager.Instance == null || TutorialManager.Instance.CanClickTray(this));
 
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -148,6 +156,7 @@ public class Tray : MonoBehaviour
 
         // Giải phóng TableSlot ngay để có thể đón Tray mới
         TableSlotManager.Instance.FreeSlotOf(this);
+        AudioManager.Instance.PlaySFX("Done");
         // Tắt collider để không bị click trong lúc bay đi
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
@@ -180,6 +189,17 @@ public class Tray : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (SkillManager.Instance != null && SkillManager.Instance.IsGridSwapModeActive)
+        {
+            Vector3 worldPos = Camera.main != null
+                ? Camera.main.ScreenToWorldPoint(Input.mousePosition)
+                : transform.position;
+
+            if (SkillManager.Instance.TryHandleGridTrayClick(worldPos))
+                return;
+            return;
+        }
+
         if (!CanClick) return;
 
         TableSlot slot = TableSlotManager.Instance.GetNextEmptySlot();
@@ -188,7 +208,7 @@ public class Tray : MonoBehaviour
         // Xóa khỏi grid ngay để RefreshCoveredState đúng
         GridMapManager.Instance.UnregisterTray(this);
         GridMapManager.Instance.RefreshCoveredState();
-
+        AudioManager.Instance.PlaySFX("Box");
         AnyTrayFlying = true;
 
         Collider2D col = GetComponent<Collider2D>();
@@ -239,6 +259,12 @@ public class Tray : MonoBehaviour
                 _renderer.sprite = _originSprite;
             _renderer.color = Color.white;
         }
+    }
+
+    /// <summary>Áp dụng lại sprite/sorting sau khi đổi layer hoặc trạng thái covered.</summary>
+    public void ApplyGridVisual()
+    {
+        UpdateVisual();
     }
 
     private void OnValidate()

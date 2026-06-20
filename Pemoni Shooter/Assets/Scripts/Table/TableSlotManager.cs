@@ -23,6 +23,16 @@ public class TableSlotManager : MonoBehaviour
     public int EmptyCount => _slots.Count - _occupiedCount;
 
     // -------------------------------------------------------
+    [Header("Bonus Slot")]
+    [SerializeField] private TableSlot _bonusSlot;
+    [SerializeField] private GameObject _UILockSlot;
+    [SerializeField] private GameObject _UIUnlockSlot;
+
+
+    public bool IsBonusSlotUnlocked { get; private set; }
+    public bool CanUnlockBonusSlot =>!IsBonusSlotUnlocked && _bonusSlot != null && !_slots.Contains(_bonusSlot);
+    //                                              
+
 
     private void Awake()
     {
@@ -138,4 +148,16 @@ public class TableSlotManager : MonoBehaviour
         }
     }
 #endif
+
+
+    public void UnlockBonusSlot()
+    {
+        if(!CanUnlockBonusSlot) return;
+
+        _slots.Add(_bonusSlot);
+        _slots.Sort((a, b) => a.WorldPosition.x.CompareTo(b.WorldPosition.x));
+        IsBonusSlotUnlocked = true;
+        _UILockSlot.SetActive(false);
+        _UIUnlockSlot.SetActive(true);
+    }
 }

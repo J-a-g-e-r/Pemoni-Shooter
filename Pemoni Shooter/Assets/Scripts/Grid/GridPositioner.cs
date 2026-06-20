@@ -19,28 +19,34 @@ public class GridPositioner : MonoBehaviour
     [ContextMenu("Snap To Grid")]
     public void UpdatePosition()
     {
-        if (tray == null) return;
+        transform.position = ComputeWorldPosition();
+    }
 
-        GridSettings grid = FindObjectOfType<GridSettings>();
-        if (grid == null) return;
+    public Vector3 ComputeWorldPosition()
+    {
+        if (tray == null) return transform.position;
 
-        // Lấy kích thước shape (số cell theo X và Y)
+        GridSettings grid = GridSettings.Instance != null
+            ? GridSettings.Instance
+            : FindObjectOfType<GridSettings>();
+        if (grid == null) return transform.position;
+
         var shape = TrayShapeUtility.GetShape(tray.TrayType);
+        if (shape == null) return transform.position;
+
         int maxX = 0, maxY = 0;
         foreach (var offset in shape)
         {
             if (offset.x > maxX) maxX = offset.x;
             if (offset.y > maxY) maxY = offset.y;
         }
-        // maxX+1, maxY+1 = số cell theo mỗi chiều
+
         float halfW = (maxX + 1) * grid.CellWidth * 0.5f;
         float halfH = (maxY + 1) * grid.CellHeight * 0.5f;
 
-        Vector3 pos = new Vector3(
+        return new Vector3(
             tray.OriginCell.x * grid.CellWidth + grid.OriginOffset.x + halfW,
             tray.OriginCell.y * grid.CellHeight + grid.OriginOffset.y + halfH,
             -tray.Layer);
-
-        transform.position = pos;
     }
 }
