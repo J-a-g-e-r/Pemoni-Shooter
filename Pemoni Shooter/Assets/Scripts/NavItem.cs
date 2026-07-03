@@ -9,6 +9,7 @@ public class NavItem : MonoBehaviour
     public RectTransform pill;
     public RectTransform iconTransform;
     public CanvasGroup labelGroup;
+    public GameObject tab;
 
     [Header("Settings")]
     public float activeFlexWidth = 260f;

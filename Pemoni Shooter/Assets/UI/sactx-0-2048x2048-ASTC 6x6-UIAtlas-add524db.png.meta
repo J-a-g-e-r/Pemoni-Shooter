@@ -1025,6 +1025,615 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: lock
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 374
+        width: 108
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2add63ed004954c94643f6e2fd6470
+      internalID: 1231874088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pl
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 1974
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f6a78e28b5dd740b18bb60a837dfcb
+      internalID: 485500084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dots
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 981
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bbde601ad2b6aa4cadf091605426cbe
+      internalID: 867980134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: large
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 796
+        width: 122
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66f92b73bc26e3469c82bb0654ef6ad
+      internalID: -2129343294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bigg
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 430
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4bc61700273614895126def32e80db
+      internalID: 424372050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlimit
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 951
+        width: 98
+        height: 83
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f61f0fa80ecc804191c54736171f8aa
+      internalID: 41251999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 3
+        width: 125
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d077cfbfcc6c0e49a154d4a3c4fc3b3
+      internalID: -1803452231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fram
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 1170
+        width: 51
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6830f3da47271724899fc13e10a0dcfd
+      internalID: -1159677469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moneypile
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1230
+        width: 85
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 035129ceb55fbd1499d162e31d7fc9e4
+      internalID: -852204689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpinWheel
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1355
+        width: 74
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7431fd7481137284188809f6735049d0
+      internalID: 1782480857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spinwheel
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 910
+        width: 74
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398dc07d86fbe69498e0ba2f19b53b3b
+      internalID: -1783167037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wheel
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 1425
+        width: 60
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818ea8492c4cd384fbe3a1149b63b0b8
+      internalID: -976931696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: presentred
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1897
+        width: 64
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b35ac7dfe2bbad149879fc7b14763623
+      internalID: 435799365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: present2
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1856
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2fda52c55367f4e8e520740ef99c00
+      internalID: 1992136445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: present3
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 1805
+        width: 53
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea97244b70c45e47b736a2187b99211
+      internalID: -848871309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: race
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1594
+        width: 96
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eca27a9b8311234aa508221f91aa3a7
+      internalID: -1609793887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 873
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cdf43dfb2b327d4494c8c968e029f13
+      internalID: -1500224894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dailyreward
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 511
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7c8e83169d54449947fd142e1ea1a9
+      internalID: -326695559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: race2
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 646
+        width: 191
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8cfb80ee47becf41bb8cc56f37ed482
+      internalID: 1112306474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icontask1
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 1281
+        width: 83
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec39cce4251628e44bd23fe7b3094fb4
+      internalID: -1713092645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icontask2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1637
+        width: 84
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8afb11ab760f0314097b4a7d7047865e
+      internalID: -2032618224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenbulb
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 1734
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb00705de602204cbf3f40b1bb3345d
+      internalID: -1077966753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluebulb
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1663
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba00a2746eb1de64b99bc9761818facc
+      internalID: 1518436055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellowbulb
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1005
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23e976d30d06194180fc7e518621ee2
+      internalID: 1850178412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redbulb
+      rect:
+        serializedVersion: 2
+        x: 1918
+        y: 0
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10eff66fbdcff9b43bac5fc5c88fee55
+      internalID: 987610373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: usebooster
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 1591
+        width: 66
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c22a9e5b0d609624ebd24181b234a6ef
+      internalID: 566406513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cup
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 656
+        width: 215
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e7ca637f867c1488b9ddec234c18b2
+      internalID: 1115462294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 625
+        width: 111
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f634e3865ca84642b5020bf065c6365
+      internalID: -943338023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1602
+        width: 72
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb993cecf7e030a43912f2e498e743d3
+      internalID: 1229961981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1037,48 +1646,77 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       English: -1844059573
+      Icon: -1803452231
       Money: 1628237452
       Music: -896887344
       Musicoff: -796936917
       SFX: -524685825
       SFXoff: -1649691783
+      SpinWheel: 1782480857
+      Spinwheel: -1783167037
       UIs: 1524708696
       ads1: 1995363589
       ads2: 537471197
       ads3: 1825740097
+      bigg: 424372050
+      bluebulb: 1518436055
       bonus-slot: -1692033104
       btn-sp: 1554482497
       c: -2019346853
       circle: -964708934
       circle2: -1029409563
+      clock: 1229961981
+      cup: 1115462294
       cupoff: -261653575
       cupon: -638651419
       d: 1860536206
+      dailyreward: -326695559
       diverse: -1633889172
       do: 393310037
       dot: -1327444106
+      dots: 867980134
       e: 671804658
+      flag: -1500224894
+      fram: -1159677469
       frame: 130973323
+      greenbulb: -1077966753
       heart: -1236198695
       heart2: -1933153223
       home: 40193022
+      icontask1: -1713092645
+      icontask2: -2032618224
       l: -376269923
+      large: -2129343294
+      level: -943338023
+      lock: 1231874088
       m: 1939609518
       money: -203863444
+      moneypile: -852204689
       o: 1123215036
       p: -1384217463
+      pl: 485500084
       plu: 1609527540
       plus: -2102562742
+      present2: 1992136445
+      present3: -848871309
+      presentred: 435799365
+      race: -1609793887
+      race2: 1112306474
       rectangular: 388490658
+      redbulb: 987610373
       replace: -85007253
       reverse: 967674002
       ribbon: -1077081169
       sactx-0-2048x2048-ASTC 6x6-UIAtlas-add524db_0: 549672844
       setting: 641282015
       t: -1527988850
+      unlimit: 41251999
+      usebooster: 566406513
       vibrate: 1471052609
       vibrateoff: 1272098457
+      wheel: -976931696
       x: -1301653445
+      yellowbulb: 1850178412
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

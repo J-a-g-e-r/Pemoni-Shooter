@@ -139,6 +139,7 @@ public class Tray : MonoBehaviour
             OnFullFilled();
             ComboManager.Instance.OnTrayFilled();
             MoneyManager.Instance.OnTrayCompleted(transform);
+            SeasonPass.SeasonPassManager.Instance?.AddPoints(10);
         }
         //else
         //{
@@ -210,6 +211,9 @@ public class Tray : MonoBehaviour
         GridMapManager.Instance.RefreshCoveredState();
         AudioManager.Instance.PlaySFX("Box");
         AnyTrayFlying = true;
+
+        //Đẩy layer lên cao để không bị tray khác che
+        _renderer.sortingOrder = 14;
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;

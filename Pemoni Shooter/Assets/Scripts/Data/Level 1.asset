@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac6218db56a0f944b9a89314dc6f480, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  trays:
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 7, y: 6}
+    layer: 1
+    localPosition: {x: 0.5, y: -0.25, z: 0}
+  - trayType: 1
+    trayColor: 1
+    originCell: {x: 5, y: 7}
+    layer: 2
+    localPosition: {x: -0.45, y: 0.25, z: -1}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 5, y: 6}
+    layer: 1
+    localPosition: {x: -0.45, y: -0.25, z: 0}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 9, y: 6}
+    layer: 1
+    localPosition: {x: 1.45, y: -0.25, z: 0}
+  - trayType: 1
+    trayColor: 1
+    originCell: {x: 7, y: 7}
+    layer: 2
+    localPosition: {x: 0.5, y: 0.25, z: -1}
+  - trayType: 1
+    trayColor: 1
+    originCell: {x: 9, y: 7}
+    layer: 2
+    localPosition: {x: 1.45, y: 0.25, z: -1}

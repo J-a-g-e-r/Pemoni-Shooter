@@ -38,8 +38,11 @@ public class CupQueue : MonoBehaviour
     /// Trả về cup đầu hàng (để GameManager kiểm tra lose), null nếu hàng rỗng
     public Cup GetFrontCup() => _visible.Count > 0 ? _visible[0] : null;
 
-    private void Awake() => Instance = this;
-
+    private void Awake()
+    {
+        Instance = this;
+        DOTween.SetTweensCapacity(1000, 200);
+    }
     // -------------------------------------------------------
 
     public void Initialize(List<Cup> allCups)

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: BGM_Main
   clip: {fileID: 8300000, guid: feeb46d1dba45f84dbfb50730f9a9c7d, type: 3}
-  volume: 1
+  volume: 0.7
   pitch: 1
-  loop: 0
+  loop: 1
   volumeVariance: 0
   pitchVariance: 0

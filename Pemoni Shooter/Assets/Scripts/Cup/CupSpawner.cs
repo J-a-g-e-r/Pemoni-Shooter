@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class CupSpawner : MonoBehaviour
 {
+    public static CupSpawner Instance { get; private set; }
+
     [Header("Cup Prefabs – đặt đúng thứ tự enum TrayColor")]
     [SerializeField] private GameObject _cupBluePrefab;
     [SerializeField] private GameObject _cupPinkPrefab;
@@ -25,14 +27,25 @@ public class CupSpawner : MonoBehaviour
 
     [Tooltip("Thứ tự MÀU cốc mong muốn (chỉ định thứ tự, KHÔNG định số lượng — số lượng mỗi màu vẫn lấy từ tổng Capacity của các Tray). " +
              "Nếu một màu xuất hiện nhiều lần trong list, mỗi lần sẽ 'tiêu' 1 cốc của màu đó theo đúng vị trí. " +
-             "Phần cốc còn dư (không được liệt kê đủ trong list) sẽ được random và nối vào cuối hàng.")]
+             "Phần cốc còn dư (không được liệt kê đủ) sẽ được random và nối vào cuối hàng.")]
     [SerializeField] private List<TrayColor> _tutorialOrder = new();
 
     // -------------------------------------------------------
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
-        SpawnForLevel();
+        // Nếu Scene không sử dụng LevelLoader (xếp khay thủ công sẵn trên Scene),
+        // thì CupSpawner tự động spawn cốc ngay khi bắt đầu.
+        LevelLoader loader = FindObjectOfType<LevelLoader>();
+        if (loader == null)
+        {
+            SpawnForLevel();
+        }
     }
 
     /// <summary>

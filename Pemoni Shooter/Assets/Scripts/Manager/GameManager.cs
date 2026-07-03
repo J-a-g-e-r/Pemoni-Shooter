@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Ease _popOutEase = Ease.InBack;
 
 
-
+    [Header("Revive")]
+    [SerializeField] private int  _playOnCost = 2000;
+    [SerializeField] private ParticleSystem _addSlotEffect;
     //[Header("Win Fireworks Spawn")]
     //[SerializeField] private ParticleSystem _fireworkPrefab;
     //[SerializeField] private RectTransform _fireworkParent;
@@ -44,6 +46,9 @@ public class GameManager : MonoBehaviour
 
 
     private bool _gameOver = false;
+    private bool _didWin = false;
+    private bool _heartConsumedThisSession = false;
+
     public bool IsInputBlocked { get; private set; }
 
     private void Awake()
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         if (_gameOver) return;
         _gameOver = true;
+        _didWin = true;
 
         Debug.Log("[GameManager] WIN!");
         AudioManager.Instance.PlaySFX("Win");
@@ -99,16 +105,26 @@ public class GameManager : MonoBehaviour
 
     public void CheckLose()
     {
-        if (_gameOver) return;
-        if (CupQueue.Instance.TotalRemaining == 0) return;
-
-        if (TableSlotManager.Instance.IsFull && !CanDispatchAny())
+    if (_gameOver) return;
+    if (CupQueue.Instance.TotalRemaining == 0) return;
+    if (TableSlotManager.Instance.IsFull && !CanDispatchAny())
+    {
+        _gameOver = true;
+        Debug.Log("[GameManager] LOSE!");
+        OpenFadePanel();
+        if (TableSlotManager.Instance.IsBonusSlotUnlocked)
         {
-            _gameOver = true;
-            Debug.Log("[GameManager] LOSE!");
-            OpenFadePanel();
+            // Đã dùng add slot rồi → thua thẳng
+            AudioManager.Instance.PlaySFX("Fail");
+            StartCoroutine(ShowPanelAfterDelay(_losePanel, 2f));
+            ConsumeHeart();
+            }
+        else
+        {
+            // Chưa dùng add slot → cho cơ hội Play On
             StartCoroutine(ShowPanelAfterDelay(_outOfSpacePanel, 2f));
         }
+    }
     }
     private IEnumerator ShowPanelAfterDelay(GameObject panel,float t)
     {
@@ -124,7 +140,16 @@ public class GameManager : MonoBehaviour
     public void OnGiveUp()
     {
         AudioManager.Instance.PlaySFX("Fail");
+        ConsumeHeart();
         StartCoroutine(HandleGiveUpFlow());
+    }
+
+    public void OnQuitGameplay()
+    {
+        ConsumeHeart();
+        OnGiveUp();
+        OpenFadePanel();
+        StartCoroutine(PopOut(_settingPanel));
     }
 
     public void OnOpenSettingPanel()
@@ -143,7 +168,7 @@ public class GameManager : MonoBehaviour
             yield return PopOut(_outOfSpacePanel);
         }
 
-        PopIn(_losePanel);
+        PopIn(_losePanel); 
     }
 
     private bool CanDispatchAny()
@@ -216,5 +241,72 @@ public class GameManager : MonoBehaviour
 
         yield return t.WaitForCompletion();
         panel.SetActive(false);
+    }
+
+    public void OnPlayOn()
+{
+    if (!TableSlotManager.Instance.CanUnlockBonusSlot) return;
+    if (MoneyManager.Instance == null || !MoneyManager.Instance.TrySpend(_playOnCost))
+    {
+        //AudioManager.Instance.PlaySFX("Fail");
+        return;
+    }
+    StartCoroutine(HandlePlayOnFlow());
+}
+    private IEnumerator HandlePlayOnFlow()
+    {
+        // Thêm slot (cùng logic skill)
+        TableSlotManager.Instance.UnlockBonusSlot();
+        AudioManager.Instance.PlaySFX("BoostComplete");
+        if (_addSlotEffect != null)
+            _addSlotEffect.Play();
+        // Cho chơi tiếp
+        _gameOver = false;
+        if (_outOfSpacePanel != null && _outOfSpacePanel.activeSelf)
+        yield return PopOut(_outOfSpacePanel);
+        CloseFadePanel();
+        AudioManager.Instance.PlaySFX("Click");
+    }
+
+    // Thêm vào GameManager — cho SkillManager dùng chung fade/popup
+
+    public void SetInputBlocked(bool blocked)
+    {
+        IsInputBlocked = blocked;
+    }
+
+    public void OpenOverlayFade()
+    {
+        OpenFadePanel();
+    }
+
+    public void CloseOverlayFade()
+    {
+        CloseFadePanel();
+    }
+
+    public void PopInPanel(GameObject panel)
+    {
+        PopIn(panel);
+    }
+
+    public IEnumerator PopOutPanel(GameObject panel)
+    {
+        yield return PopOut(panel);
+    }
+
+    public void OnWinNext()
+    {
+        LevelManager.Instance?.CompleteCurrentLevel();
+        LevelManager.Instance?.LoadMainScene();
+    }
+
+    private void ConsumeHeart()
+    {
+        if (_didWin) return;
+        if (_heartConsumedThisSession) return;
+
+        HeartManager.Instance?.ConsumeHeartOnFailOrExit();
+        _heartConsumedThisSession = true;
     }
 }

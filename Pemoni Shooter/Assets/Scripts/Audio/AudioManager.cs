@@ -285,6 +285,7 @@ namespace AudioSystem
             masterSFXVolume = Mathf.Clamp01(volume);
             ApplyMixerVolume(MixerSfxParam, masterSFXVolume);
             PlayerPrefs.SetFloat(PrefSfxVolume, masterSFXVolume);
+            PlayerPrefs.Save();
         }
 
         public void SetMusicVolume(float volume)
@@ -292,6 +293,8 @@ namespace AudioSystem
             masterMusicVolume = Mathf.Clamp01(volume);
             ApplyMixerVolume(MixerBgmParam, masterMusicVolume);
             PlayerPrefs.SetFloat(PrefMusicVolume, masterMusicVolume);
+            PlayerPrefs.Save();
+
         }
 
         public float GetSFXVolume() => masterSFXVolume;
@@ -299,8 +302,8 @@ namespace AudioSystem
 
         private void LoadVolumeSettings()
         {
-            masterSFXVolume = PlayerPrefs.GetFloat(PrefSfxVolume, masterSFXVolume);
-            masterMusicVolume = PlayerPrefs.GetFloat(PrefMusicVolume, masterMusicVolume);
+            masterMusicVolume = PlayerPrefs.GetInt("setting_music", 1) == 1 ? 1f : 0f;
+            masterSFXVolume = PlayerPrefs.GetInt("setting_sfx", 1) == 1 ? 1f : 0f;
             ApplyMixerVolume(MixerSfxParam, masterSFXVolume);
             ApplyMixerVolume(MixerBgmParam, masterMusicVolume);
         }

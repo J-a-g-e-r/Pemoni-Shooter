@@ -131,7 +131,7 @@ TextureImporter:
         width: 1301
         height: 787
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,27 @@ TextureImporter:
       bones: []
       spriteID: dc6a548073247cf45b3d67995801fc40
       internalID: 922996306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ray_0
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 512
+        width: 851
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6d6d41395a2e64598c334986ea776f
+      internalID: 1994593666
       vertices: []
       indices: 
       edges: []
@@ -155,6 +176,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       ChatGPT Image 15_08_16 11 thg 6, 2026_0: 922996306
+      ray_0: 1994593666
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
