@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using AudioSystem;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,20 +28,21 @@ namespace RewardSystem
 
         [Header("Hiển thị nội dung")]
         [SerializeField] private Image mainIcon;           // icon rương (đóng) hoặc icon reward đơn
-        [SerializeField] private Text amountText;          // "500" — đổi sang TMP_Text nếu cần
-        [SerializeField] private Text tapToContinueText;
+        [SerializeField] private TMP_Text amountText;          // "500" — đổi sang TMP_Text nếu cần
+        [SerializeField] private TMP_Text tapToContinueText;
 
         [Header("Danh sách nhiều phần thưởng (khi rương chứa >1 item)")]
         [SerializeField] private Transform multiRewardContainer;
         [SerializeField] private RewardItemView multiRewardItemPrefab;
 
         [Header("Animation rương")]
+        [SerializeField] private GameObject chestRoot;
         [SerializeField] private Animator chestAnimator;   // Animator gắn trên mainIcon hoặc object rương riêng
         [SerializeField] private string chestOpenTrigger = "Open";
         [SerializeField] private float chestAnimFallbackDuration = 1.0f; // dùng nếu không có Animation Event
 
         private RewardManager manager;
-        private RewardData currentReward;
+        [System.NonSerialized] private RewardData currentReward;
         private State state;
         private readonly List<RewardItemView> spawnedItems = new List<RewardItemView>();
 
@@ -56,12 +57,12 @@ namespace RewardSystem
         {
             currentReward = reward;
             ClearMultiRewardItems();
+            AudioManager.Instance.PlaySFX("ClaimReward");
 
             if (reward.IsChest)
             {
-                // Bước 1: hiện rương đóng, chờ tap để mở
                 state = State.WaitingTapToOpenChest;
-                SetSingleDisplay(reward.closedChestIcon != null ? reward.closedChestIcon : reward.icon, "");
+                SetChestDisplay();                          // ← dùng Chest, không dùng IconReward
                 SetTapCatcherEnabled(true);
                 tapToContinueText.text = "Tap to open";
             }
@@ -98,6 +99,7 @@ namespace RewardSystem
         {
             state = State.PlayingChestAnimation;
             SetTapCatcherEnabled(false);
+            AudioManager.Instance.PlaySFX("OpenChest");
             tapToContinueText.text = "";
 
             if (chestAnimator != null)
@@ -136,7 +138,8 @@ namespace RewardSystem
 
             if (contents.Count == 1)
             {
-                SetSingleDisplay(contents[0].icon, contents[0].amount > 1 ? $"{contents[0].amount}" : "");
+                var item = contents[0];
+                SetSingleDisplay(item.icon, item.amount > 1 ? $"{item.amount}" : "");
             }
             else
             {
@@ -155,21 +158,33 @@ namespace RewardSystem
             if (currentReward.IsChest)
             {
                 foreach (var item in currentReward.chestContents)
-                    manager.NotifyRewardClaimed(item);
+                    manager.NotifyRewardClaimed(item.ToRewardData());
             }
             else
             {
                 manager.NotifyRewardClaimed(currentReward);
             }
 
+            if (chestRoot != null)
+                chestRoot.SetActive(false);
+
             state = State.Idle;
+            currentReward = null;
             manager.NotifyPanelClosed();
+        }
+
+        private void OnDisable()
+        {
+            currentReward = null;
+            StopAllCoroutines();
         }
 
         // ---------- Helpers hiển thị ----------
 
         private void SetSingleDisplay(Sprite icon, string amount)
         {
+            if (chestRoot != null)
+                chestRoot.SetActive(false);
             multiRewardContainer.gameObject.SetActive(false);
             mainIcon.gameObject.SetActive(true);
             mainIcon.sprite = icon;
@@ -177,8 +192,10 @@ namespace RewardSystem
             amountText.text = amount;
         }
 
-        private void ShowMultiRewardDisplay(List<RewardData> items)
+        private void ShowMultiRewardDisplay(List<RewardEntry> items)
         {
+            if (chestRoot != null)
+                chestRoot.SetActive(false);
             mainIcon.gameObject.SetActive(false);
             amountText.gameObject.SetActive(false);
             multiRewardContainer.gameObject.SetActive(true);
@@ -200,6 +217,21 @@ namespace RewardSystem
         private void SetTapCatcherEnabled(bool enabled)
         {
             fullScreenTapCatcher.interactable = enabled;
+        }
+
+        private void SetChestDisplay()
+        {
+            if (chestRoot != null)
+                chestRoot.SetActive(true);
+            mainIcon.gameObject.SetActive(false);
+            amountText.gameObject.SetActive(false);
+            multiRewardContainer.gameObject.SetActive(false);
+            // Reset animator về trạng thái rương đóng (ChestWait)
+            if (chestAnimator != null)
+            {
+                chestAnimator.Rebind();
+                chestAnimator.Update(0f);
+            }
         }
     }
 }

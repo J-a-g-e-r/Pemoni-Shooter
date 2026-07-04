@@ -215,7 +215,7 @@ TextureImporter:
         width: 19
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,6 +223,48 @@ TextureImporter:
       bones: []
       spriteID: 10587def9fc94f34da02ad5bd73db6bc
       internalID: 801383752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 497
+        width: 254
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5db8b4cb7c450e44adada58dab07fc9
+      internalID: 1584311133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cHEST opem
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 282
+        width: 255
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf08a106d49ee54f821b01be4fcf306
+      internalID: 667323201
       vertices: []
       indices: 
       edges: []
@@ -240,6 +282,8 @@ TextureImporter:
     nameFileIdTable:
       activatebtn: -1138925739
       border: 801383752
+      cHEST opem: 667323201
+      chest: 1584311133
       decor: -1902224159
       goldpassicon: -944225469
       sactx-0-1024x1024-ASTC 6x6-SeasonPass_SharedAtlas-5bcd6b47_0: 1575907169

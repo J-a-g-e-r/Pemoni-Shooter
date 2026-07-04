@@ -70,6 +70,13 @@ namespace SeasonPass
                 amount = rewardInfo.amount,
                 icon = rewardInfo.icon,
             };
+
+            if (rewardData.IsChest)
+            {
+                rewardData.closedChestIcon = rewardInfo.icon;
+                FillChestContents(rewardData, rewardInfo);
+            }
+
             RewardSystem.RewardManager.Instance.GrantReward(rewardData);
 
             Refresh();
@@ -90,6 +97,27 @@ namespace SeasonPass
                 RewardType.InfiniteHeart => RewardSystem.RewardType.InfiniteHeart,
                 _ => RewardSystem.RewardType.Other,
             };
+        }
+        private static void FillChestContents(RewardSystem.RewardData rewardData, RewardInfo rewardInfo)
+        {
+            rewardData.chestContents.Clear();
+
+            if (rewardInfo.chestContents == null || rewardInfo.chestContents.Count == 0)
+            {
+                Debug.LogWarning($"Chest at level has no chestContents configured!");
+                return;
+            }
+
+            foreach (var entry in rewardInfo.chestContents)
+            {
+                if (entry == null || entry.type == RewardSystem.RewardType.Chest)
+                    continue;
+
+                rewardData.chestContents.Add(new RewardSystem.RewardEntry(
+                    entry.type,
+                    entry.amount,
+                    entry.icon));
+            }
         }
     }
 }

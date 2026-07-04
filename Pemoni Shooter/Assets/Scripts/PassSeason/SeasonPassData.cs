@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RewardSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace SeasonPass
         public RewardType type;
         public int amount = 1;
         public Sprite icon;
+        public List<RewardEntry> chestContents = new List<RewardEntry>();
     }
 
     [Serializable]
@@ -37,6 +39,8 @@ namespace SeasonPass
 
         [Header("Phần thưởng Gold Pass (bên phải)")]
         public RewardInfo goldReward;
+
+
     }
 
     [CreateAssetMenu(fileName = "NewSeasonPass", menuName = "SeasonPass/Season Pass Data")]

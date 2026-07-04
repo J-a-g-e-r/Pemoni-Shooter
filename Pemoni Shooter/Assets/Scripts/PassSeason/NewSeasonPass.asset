@@ -19,19 +19,241 @@ MonoBehaviour:
   levels:
   - requiredPoints: 0
     freeReward:
-      type: 0
-      amount: 100
-      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents:
+      - type: 0
+        amount: 100
+        icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      - type: 9
+        amount: 1000
+        icon: {fileID: 41251999, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      - type: 6
+        amount: 5
+        icon: {fileID: -1692033104, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
     goldReward:
       type: 2
       amount: 1
       icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
-  - requiredPoints: 100
+      chestContents: []
+  - requiredPoints: 50
     freeReward:
       type: 5
       amount: 1
       icon: {fileID: -1692033104, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
     goldReward:
       type: 5
       amount: 5
       icon: {fileID: -1692033104, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+  - requiredPoints: 500
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1000
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1250
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 1400
+    freeReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1550
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1700
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1800
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 1900
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 2000
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 2200
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 2400
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 2500
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: 1584311133, guid: 4a13e3e0873c63646982fd26a715d231, type: 3}
+      chestContents: []
+  - requiredPoints: 2700
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 2900
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 3000
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 3250
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 3500
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 3750
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []
+  - requiredPoints: 4000
+    freeReward:
+      type: 0
+      amount: 250
+      icon: {fileID: -852204689, guid: e77a114ccada4da43b1e44b6063d4230, type: 3}
+      chestContents: []
+    goldReward:
+      type: 2
+      amount: 1
+      icon: {fileID: -1150740098, guid: 0459546c146d4194a9b5558ee7be0c98, type: 3}
+      chestContents: []

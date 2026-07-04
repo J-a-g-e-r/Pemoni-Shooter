@@ -40,6 +40,7 @@ namespace RewardSystem
         /// <summary>Thêm 1 phần thưởng vào hàng đợi hiển thị.</summary>
         public void GrantReward(RewardData reward)
         {
+            RewardData.Sanitize(reward);
             queue.Enqueue(reward);
             TryShowNext();
         }
@@ -47,7 +48,11 @@ namespace RewardSystem
         /// <summary>Thêm nhiều phần thưởng cùng lúc (ví dụ claim nhiều mốc Season Pass 1 lần).</summary>
         public void GrantRewards(IEnumerable<RewardData> rewards)
         {
-            foreach (var r in rewards) queue.Enqueue(r);
+            foreach (var r in rewards)
+            {
+                RewardData.Sanitize(r);
+                queue.Enqueue(r);
+            }
             TryShowNext();
         }
 
@@ -69,7 +74,9 @@ namespace RewardSystem
         /// <summary>Gọi bởi RewardPanelUI khi 1 reward (không phải chest, hoặc nội dung bên trong chest) đã được claim thật sự.</summary>
         internal void NotifyRewardClaimed(RewardData reward)
         {
+            ApplyReward(reward);
             OnRewardGranted?.Invoke(reward);
+
             // TODO: chỗ này gọi vào hệ thống Currency/Inventory thật của bạn, ví dụ:
             // CurrencyManager.Instance.Add(reward.type, reward.amount);
         }

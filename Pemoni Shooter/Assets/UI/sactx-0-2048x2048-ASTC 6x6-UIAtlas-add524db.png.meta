@@ -1622,7 +1622,7 @@ TextureImporter:
         width: 72
         height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1630,6 +1630,174 @@ TextureImporter:
       bones: []
       spriteID: cb993cecf7e030a43912f2e498e743d3
       internalID: 1229961981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 613
+        width: 105
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1beda105652431649823aaa3d298d54d
+      internalID: -1333911101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1060
+        width: 82
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 759841e78e9bb3940b9c0ce4e997bacd
+      internalID: -1952958667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: W
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 546
+        width: 122
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0434a8a4423d847af4a56f596bf844
+      internalID: 249598850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1455
+        width: 82
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885133d8b6c06c243b3e57c0d6d4c873
+      internalID: -1579400215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ASTC 6x6-UIAtlas-add524db_1
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 335
+        width: 69
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44226242f081e3a4f874c9969761c6ba
+      internalID: -132224503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: D
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 640
+        width: 94
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db6384db370f3541860ec7860582182
+      internalID: -809786113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1052
+        width: 81
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e9a46ec48ccf9438ab20b746fd4a76
+      internalID: 1999839067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ads
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 1899
+        width: 49
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbaeb859f6edf44293d558c9226d4e9
+      internalID: -814091611
       vertices: []
       indices: 
       edges: []
@@ -1645,16 +1813,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      A: -1579400215
+      D: -809786113
+      E: -1952958667
       English: -1844059573
       Icon: -1803452231
       Money: 1628237452
       Music: -896887344
       Musicoff: -796936917
+      R: -1333911101
+      S: 1999839067
       SFX: -524685825
       SFXoff: -1649691783
       SpinWheel: 1782480857
       Spinwheel: -1783167037
       UIs: 1524708696
+      W: 249598850
+      ads: -814091611
       ads1: 1995363589
       ads2: 537471197
       ads3: 1825740097
@@ -1708,6 +1883,7 @@ TextureImporter:
       reverse: 967674002
       ribbon: -1077081169
       sactx-0-2048x2048-ASTC 6x6-UIAtlas-add524db_0: 549672844
+      sactx-0-2048x2048-ASTC 6x6-UIAtlas-add524db_1: -132224503
       setting: 641282015
       t: -1527988850
       unlimit: 41251999

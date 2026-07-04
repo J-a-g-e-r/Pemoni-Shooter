@@ -11,6 +11,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject _fadePanel;
     [SerializeField] private GameObject _settingPanel;
     [SerializeField] private GameObject _seasonPassPanel;
+    [SerializeField] private GameObject _dailyPanel;
 
 
 
@@ -88,6 +89,8 @@ public class MainMenuUI : MonoBehaviour
         panel.SetActive(false);
     }
 
+    #region Open/Close Panels
+
     public void OnOpenSettingPanel()
     {
         AudioManager.Instance.PlaySFX("Click");
@@ -100,6 +103,21 @@ public class MainMenuUI : MonoBehaviour
         StartCoroutine(PopOut(_settingPanel));
         CloseFadePanel();
     }
+
+    public void OnOpenDailyRewardPanel()
+    {
+        AudioManager.Instance.PlaySFX("Click");
+        OpenFadePanel();
+        PopIn(_dailyPanel);
+    }
+
+    public void CloseDailyRewardPanel()
+    {
+        StartCoroutine(PopOut(_dailyPanel));
+        CloseFadePanel();
+    }
+
+    #endregion
 
     public void OnOpenSeasonPassPanel()
     {
