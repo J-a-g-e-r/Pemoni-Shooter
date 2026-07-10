@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Gắn vào từng Cup prefab.
-/// Lưu màu sắc và điều phối animation bay vào CupSlot của Tray.
-/// </summary>
+
 [RequireComponent(typeof(CupFlyAnim))]
 public class Cup : MonoBehaviour
 {
     [Header("Data")]
-    public TrayColor Color;
-
+    public TrayColor Color; // Màu khay của cốc
     private CupFlyAnim _flyAnim;
 
     private void Awake()

@@ -131,7 +131,7 @@ TextureImporter:
         width: 182
         height: 174
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,69 @@ TextureImporter:
       bones: []
       spriteID: 953d8a72a87e60a479f2df4fa73178f2
       internalID: -1861483202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 160
+        width: 151
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c86a4627ac494438d7417981010c6f
+      internalID: -952868473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finger1
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 345
+        width: 54
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a5dc0a2117da474f94679adcdb081d3
+      internalID: 310362918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finger2
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 344
+        width: 65
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa9c65a3b509ff4888d8351c0bcf3b0
+      internalID: 1596558958
       vertices: []
       indices: 
       edges: []
@@ -154,6 +217,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      finger1: 310362918
+      finger2: 1596558958
+      hand: -952868473
       handTut: -1861483202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -241,43 +241,6 @@ public class CupQueue : MonoBehaviour
         if (sr != null) sr.sortingOrder = order;
     }
 
-
-    //public void SortNextCups(int count = 50)
-    //{
-    //    if (_introPlaying) return;
-    //    if (count <= 0) return;
-    //    _dispatchScheduled = false; // hủy dispatch đang chờ nếu có
-
-    //    int visibleCount = _visible.Count;
-    //    if (visibleCount == 0 && _pending.Count == 0) return;
-    //    // 1. Gom cốc theo thứ tự sẽ được dispatch
-    //    var block = new List<Cup>(visibleCount + count);
-    //    block.AddRange(_visible);
-    //    int need = count - block.Count;
-    //    while (need > 0 && _pending.Count > 0)
-    //    {
-    //        block.Add(_pending.Dequeue());
-    //        need--;
-    //    }
-    //    if (block.Count <= 1) return;
-    //    // 2. Sắp xếp theo màu (cùng màu gom nhóm)
-    //    block.Sort((a, b) => a.Color.CompareTo(b.Color));
-    //    // 3. Gán lại visible
-    //    _visible.Clear();
-    //    for (int i = 0; i < visibleCount && i < block.Count; i++)
-    //        _visible.Add(block[i]);
-    //    // 4. Gán lại pending: phần dư của block + phần pending chưa đụng tới
-    //    var newPending = new List<Cup>();
-    //    for (int i = visibleCount; i < block.Count; i++)
-    //        newPending.Add(block[i]);
-    //    while (_pending.Count > 0)
-    //        newPending.Add(_pending.Dequeue());
-    //    _pending.Clear();
-    //    foreach (var cup in newPending)
-    //        _pending.Enqueue(cup);
-    //    // 5. Cập nhật vị trí trên màn hình
-    //    RepositionVisibleCups(instant: true);
-    //}
     private void RepositionVisibleCups(bool instant)
     {
         for (int i = 0; i < _visible.Count; i++)

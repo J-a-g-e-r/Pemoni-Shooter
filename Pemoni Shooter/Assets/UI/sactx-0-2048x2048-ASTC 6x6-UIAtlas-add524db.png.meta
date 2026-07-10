@@ -1790,7 +1790,7 @@ TextureImporter:
         width: 49
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1798,6 +1798,48 @@ TextureImporter:
       bones: []
       spriteID: bdbaeb859f6edf44293d558c9226d4e9
       internalID: -814091611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Destroy
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 917
+        width: 109
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c0544af290c2204483f2153f271a9fe
+      internalID: -2132371827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: return
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 1247
+        width: 71
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 579e000b84257ed418952ad653282d76
+      internalID: 18764961
       vertices: []
       indices: 
       edges: []
@@ -1815,6 +1857,7 @@ TextureImporter:
     nameFileIdTable:
       A: -1579400215
       D: -809786113
+      Destroy: -2132371827
       E: -1952958667
       English: -1844059573
       Icon: -1803452231
@@ -1880,6 +1923,7 @@ TextureImporter:
       rectangular: 388490658
       redbulb: 987610373
       replace: -85007253
+      return: 18764961
       reverse: 967674002
       ribbon: -1077081169
       sactx-0-2048x2048-ASTC 6x6-UIAtlas-add524db_0: 549672844

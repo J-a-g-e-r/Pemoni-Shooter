@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Gắn vào GameObject bất kỳ trong scene (ví dụ: GameManager).
+/// Gắn ở CupSpawner 
 /// Tính tổng capacity của tất cả Tray, tạo đúng số lượng Cup tương ứng.
 /// Mặc định shuffle ngẫu nhiên; nếu bật Tutorial Mode thì xếp theo thứ tự
 /// màu cố định (_tutorialOrder), phần dư còn lại mới random.
@@ -40,7 +40,7 @@ public class CupSpawner : MonoBehaviour
     private void Start()
     {
         // Nếu Scene không sử dụng LevelLoader (xếp khay thủ công sẵn trên Scene),
-        // thì CupSpawner tự động spawn cốc ngay khi bắt đầu.
+        // thì CupSpawner tự động spawn cốc ngay khi bắt đầu. (cái nàt cho Level Editor)
         LevelLoader loader = FindObjectOfType<LevelLoader>();
         if (loader == null)
         {

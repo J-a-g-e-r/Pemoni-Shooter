@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlaySFX("Win");
         //OpenFadePanel();
         PopIn(_congratPanel);
+        MoneyManager.Instance?.AddMoney(100);
         StartCoroutine(ShowPanelAfterDelay(_winPanel,_winDelay));
     }
 

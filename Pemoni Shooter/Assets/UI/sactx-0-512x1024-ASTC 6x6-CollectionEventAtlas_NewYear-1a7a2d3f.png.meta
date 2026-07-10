@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0459546c146d4194a9b5558ee7be0c98
+guid: 0c3ee8d6a96e6594ca7b689e777d8676
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,97 +123,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sactx-0-256x512-ASTC 6x6-LiveOpsJoyBundlesAtlas-76bad583_0
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 454
-        width: 83
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f46b0e23002f2c4e936bf2b3a0759ad
-      internalID: 143275569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CHEST
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 265
-        width: 122
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4055c7646686776468418d2c2c163164
-      internalID: -1150740098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lock
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 260
-        width: 29
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 491a5a1cbcefb484dbcaaeaee5ae878b
-      internalID: 1476139128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loc
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 65
-        width: 43
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c7842fc09950ea4eab970ecc3bd7e48
-      internalID: -607102755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconProgress
+      name: bg
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 150
-        height: 154
+        width: 512
+        height: 492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18381ca3173ab749a2def5998e55999
+      internalID: 266433990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgskin
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 492
+        width: 257
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 579d6f6ed2c2e284292f09e7c7f0b8cc
-      internalID: -156358310
+      spriteID: 4cc57adf0f5f21b4e901b6738997abab
+      internalID: 675322426
       vertices: []
       indices: 
       edges: []
@@ -230,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f30dc274036bcfe4d809f2ab60bd02a1
+    spriteID: 0b83c4e8865a8064fa62c1aaaa26fbd1
     internalID: 0
     vertices: []
     indices: 
@@ -238,11 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CHEST: -1150740098
-      iconProgress: -156358310
-      loc: -607102755
-      lock: 1476139128
-      sactx-0-256x512-ASTC 6x6-LiveOpsJoyBundlesAtlas-76bad583_0: 143275569
+      bg: 266433990
+      bgskin: 675322426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

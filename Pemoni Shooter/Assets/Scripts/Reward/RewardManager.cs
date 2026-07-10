@@ -7,8 +7,7 @@ namespace RewardSystem
     /// <summary>
     /// Điểm vào duy nhất để "phát thưởng" trong game. Bất kỳ hệ thống nào (Season Pass, quiz, mở rương...)
     /// chỉ cần gọi RewardManager.Instance.GrantReward(...) hoặc GrantRewards(...).
-    /// Manager sẽ xếp hàng và hiển thị panel lần lượt, xử lý cả trường hợp rương (chest) cần chơi animation mở
-    /// trước khi hiện phần thưởng bên trong.
+    /// Manager sẽ xếp hàng và hiển thị panel lần lượt
     /// </summary>
     public class RewardManager : MonoBehaviour
     {
@@ -77,8 +76,6 @@ namespace RewardSystem
             ApplyReward(reward);
             OnRewardGranted?.Invoke(reward);
 
-            // TODO: chỗ này gọi vào hệ thống Currency/Inventory thật của bạn, ví dụ:
-            // CurrencyManager.Instance.Add(reward.type, reward.amount);
         }
 
         /// <summary>Gọi bởi RewardPanelUI khi panel hiện tại đã đóng hoàn toàn, để hiện thưởng tiếp theo trong hàng đợi.</summary>

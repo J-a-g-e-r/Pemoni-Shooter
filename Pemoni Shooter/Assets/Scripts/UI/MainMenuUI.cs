@@ -12,6 +12,10 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject _settingPanel;
     [SerializeField] private GameObject _seasonPassPanel;
     [SerializeField] private GameObject _dailyPanel;
+    [SerializeField] private GameObject _racePanel;
+    [SerializeField] private GameObject _pigPanel;
+    [SerializeField] private GameObject _spinPanel;
+
 
 
 
@@ -109,11 +113,51 @@ public class MainMenuUI : MonoBehaviour
         AudioManager.Instance.PlaySFX("Click");
         OpenFadePanel();
         PopIn(_dailyPanel);
+        RewardSystem.DailyRewardManager.Instance?.OnPanelOpened();
     }
 
     public void CloseDailyRewardPanel()
     {
         StartCoroutine(PopOut(_dailyPanel));
+        CloseFadePanel();
+    }
+
+    public void OnOpenRacePanel()
+    {
+        AudioManager.Instance.PlaySFX("Click");
+        OpenFadePanel();
+        PopIn(_racePanel);
+        RewardSystem.DailyRewardManager.Instance?.OnPanelOpened();
+    }
+
+    public void CloseRacePanel()
+    {
+        StartCoroutine(PopOut(_racePanel));
+        CloseFadePanel();
+    }
+
+    public void OpenPigPanel()
+    {
+        AudioManager.Instance.PlaySFX("Click");
+        OpenFadePanel();
+        PopIn(_pigPanel);
+    }
+    public void ClosePigPanel()
+    {
+        StartCoroutine(PopOut(_pigPanel));
+        CloseFadePanel();
+    }
+
+    public void OpenSpinPanel()
+    {
+        AudioManager.Instance.PlaySFX("Click");
+        OpenFadePanel();
+        PopIn(_spinPanel);
+    }
+
+    public void CloseSpinPanel()
+    {
+        StartCoroutine(PopOut(_spinPanel));
         CloseFadePanel();
     }
 

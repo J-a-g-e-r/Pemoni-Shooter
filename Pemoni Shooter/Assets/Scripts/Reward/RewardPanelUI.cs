@@ -39,6 +39,7 @@ namespace RewardSystem
         [SerializeField] private GameObject chestRoot;
         [SerializeField] private Animator chestAnimator;   // Animator gắn trên mainIcon hoặc object rương riêng
         [SerializeField] private string chestOpenTrigger = "Open";
+        [SerializeField] private string chestCloseTrigger = "Close";
         [SerializeField] private float chestAnimFallbackDuration = 1.0f; // dùng nếu không có Animation Event
 
         private RewardManager manager;
@@ -70,7 +71,7 @@ namespace RewardSystem
             {
                 // Reward thường: hiện luôn, chờ tap để nhận
                 state = State.WaitingTapToClaim;
-                SetSingleDisplay(reward.icon, reward.amount > 1 ? $"{reward.amount}" : "");
+                SetSingleDisplay(reward.icon, FormatAmount(reward));
                 SetTapCatcherEnabled(true);
                 tapToContinueText.text = "Tap to continue";
             }
@@ -119,6 +120,7 @@ namespace RewardSystem
         {
             yield return new WaitForSeconds(chestAnimFallbackDuration);
             // Nếu Animation Event đã gọi trước rồi thì state sẽ khác PlayingChestAnimation, tránh gọi 2 lần
+            chestAnimator.SetTrigger(chestCloseTrigger);
             if (state == State.PlayingChestAnimation)
                 OnChestAnimationFinished();
         }
@@ -232,6 +234,20 @@ namespace RewardSystem
                 chestAnimator.Rebind();
                 chestAnimator.Update(0f);
             }
+        }
+
+        private static string FormatAmount(RewardData reward)
+        {
+            if (reward.type == RewardType.InfiniteHeart)
+                return FormatDuration(reward.amount);
+            return reward.amount > 1 ? $"x{reward.amount}" : "";
+        }
+        private static string FormatDuration(int seconds)
+        {
+            if (seconds >= 86400) return $"{seconds / 86400}d";
+            if (seconds >= 3600) return $"{seconds / 3600}h";
+            if (seconds >= 60) return $"{seconds / 60}m";
+            return $"{seconds}s";
         }
     }
 }

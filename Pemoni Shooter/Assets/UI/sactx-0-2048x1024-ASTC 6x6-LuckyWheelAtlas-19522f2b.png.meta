@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba9bc9b1530bc98478e953628ad3f25e
+guid: 1497ed110784455488c125e2f94ae66b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ribbon
+      name: Wheel
       rect:
         serializedVersion: 2
-        x: 456
-        y: 910
-        width: 53
-        height: 52
+        x: 8
+        y: 7
+        width: 687
+        height: 688
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,167 +137,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdbc8bea2012eff41a8b85f9120fbc62
-      internalID: 1788199085
+      spriteID: 058dfe5ab58af4d4181f875fc4463284
+      internalID: -524306374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoldPass
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 340
-        width: 256
-        height: 139
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9027f3ad34c053c47b9f46284eeef4af
-      internalID: -2113013103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arroww
-      rect:
-        serializedVersion: 2
-        x: 927
-        y: 336
-        width: 65
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be7542144468b6645b8f946cb89e4db8
-      internalID: -121255207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ribbon2
-      rect:
-        serializedVersion: 2
-        x: 788
-        y: 830
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4c18c3eb49f0844b9b75628c3c1bb0d
-      internalID: 1176925862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ribbon3
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 831
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5735ed6d86e47584f805ff1acebc2274
-      internalID: 351447342
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sactx-0-1024x1024-ASTC 6x6-IAPStoreAtlas-408e30b4_0
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 890
-        width: 129
-        height: 119
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00e00b615a3ce65428082fdcaefa1080
-      internalID: 22963821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bar
-      rect:
-        serializedVersion: 2
-        x: 517
-        y: 494
-        width: 82
-        height: 238
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 395839f7da33b6e4ab012d468e2f2aa4
-      internalID: 332193504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tag
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 580
-        width: 154
-        height: 155
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05c703a58b43744479ed8cd61e189c72
-      internalID: -1678874638
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rewards
+      name: bannerSpin
       rect:
         serializedVersion: 2
         x: 0
-        y: 291
-        width: 392
-        height: 281
+        y: 705
+        width: 722
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316ab63d60ef44446a209fcafd854265
+      internalID: 811135616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spincore
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 476
+        width: 156
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a28c614ea7a504383d03b3e3df2c60
+      internalID: -1935812629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reward
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 471
+        width: 176
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1846a6774d349d419da7c1a70dc6774
+      internalID: 334613650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mark
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 803
+        width: 87
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042f10ac6c2c1dc49913847dc3be311f
+      internalID: 281806551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wheel
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 0
+        width: 656
+        height: 681
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8948e871c7b21ed4a8beabb690c72a06
+      internalID: -1367054481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: core
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 2
+        width: 137
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574094227926d7f40956eb031a5fff76
+      internalID: -1424028793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banner
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 153
+        width: 30
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1b741564d282e4e9ddb2fd74cfacf0
+      internalID: 1713401993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 684
+        width: 113
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5bc69e2306a5fc48a948d5f59097dc0
-      internalID: 211109604
+      spriteID: 3d6c36cbf357972478ff77c7e5a47ba1
+      internalID: 1132028925
       vertices: []
       indices: 
       edges: []
@@ -314,7 +314,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 726b645dbf2a6944ca74f2b7959271ef
     internalID: 0
     vertices: []
     indices: 
@@ -322,15 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GoldPass: -2113013103
-      arroww: -121255207
-      bar: 332193504
-      rewards: 211109604
-      ribbon: 1788199085
-      ribbon2: 1176925862
-      ribbon3: 351447342
-      sactx-0-1024x1024-ASTC 6x6-IAPStoreAtlas-408e30b4_0: 22963821
-      tag: -1678874638
+      Wheel: -524306374
+      banner: 1713401993
+      bannerSpin: 811135616
+      core: -1424028793
+      light: 1132028925
+      mark: 281806551
+      reward: 334613650
+      spincore: -1935812629
+      wheel: -1367054481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
