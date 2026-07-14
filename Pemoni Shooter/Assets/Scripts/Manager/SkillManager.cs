@@ -200,6 +200,7 @@ public class SkillManager : MonoBehaviour
         AudioManager.Instance.PlaySFX("BoostComplete");
         if (_addSlotEffect != null)
             _addSlotEffect.Play();
+        NotifyBoosterUsed();
     }
     public void UseSortCups()
     {
@@ -207,6 +208,7 @@ public class SkillManager : MonoBehaviour
         if (CupQueue.Instance == null) return;
         SetCharges(SkillType.SortCups, GetCharges(SkillType.SortCups) - 1);
         CupQueue.Instance.SortVisibleCups();
+        NotifyBoosterUsed();
     }
     public void UseSwapGridTrays()
     {
@@ -308,9 +310,11 @@ public class SkillManager : MonoBehaviour
             if (poserB != null) poserB.UpdatePosition();
             GridMapManager.Instance.RefreshAllGridTrayVisuals();
             SetCharges(SkillType.SwapGrid, GetCharges(SkillType.SwapGrid) - 1);
+            NotifyBoosterUsed();
             _firstTray = null;
             IsGridSwapping = false;
             AudioManager.Instance.PlaySFX("BoostComplete");
+
         });
     }
     private static void ApplySwapVisuals(Tray trayA, Tray trayB)
@@ -323,5 +327,10 @@ public class SkillManager : MonoBehaviour
     {
         AddCharges(type, amount);
         SkillInventory.Instance?.AddCharges(type, amount); // sync save
+    }
+
+    public void NotifyBoosterUsed()
+    {
+        MissionManager.Instance?.AddProgress(MissionType.UseBoosters, 1);
     }
 }

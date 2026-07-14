@@ -13,124 +13,329 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   trays:
-  - trayType: 0
-    trayColor: 1
-    originCell: {x: 7, y: 6}
+  - trayType: 4
+    trayColor: 2
+    originCell: {x: 7, y: 11}
     layer: 2
-    localPosition: {x: 0.5, y: -0.5, z: -1}
-  - trayType: 0
-    trayColor: 3
-    originCell: {x: 8, y: 5}
-    layer: 1
-    localPosition: {x: 0.975, y: -1, z: 0}
-  - trayType: 0
-    trayColor: 7
-    originCell: {x: 8, y: 7}
-    layer: 1
-    localPosition: {x: 0.975, y: 0, z: 0}
-  - trayType: 0
+    localPosition: {x: 0.975, y: 2, z: -1}
+  - trayType: 1
     trayColor: 0
-    originCell: {x: 6, y: 5}
-    layer: 1
-    localPosition: {x: 0.025000006, y: -1, z: 0}
+    originCell: {x: 9, y: 1}
+    layer: 2
+    localPosition: {x: 1.45, y: -2.75, z: -1}
   - trayType: 0
     trayColor: 2
-    originCell: {x: 6, y: 7}
+    originCell: {x: 13, y: 7}
+    layer: 2
+    localPosition: {x: 3.35, y: 0, z: -1}
+  - trayType: 0
+    trayColor: 1
+    originCell: {x: 0, y: 6}
     layer: 1
-    localPosition: {x: 0.025000006, y: 0, z: 0}
-  - trayType: 1
-    trayColor: 7
-    originCell: {x: 13, y: 1}
-    layer: 2
-    localPosition: {x: 3.35, y: -2.75, z: -1}
-  - trayType: 1
-    trayColor: 3
-    originCell: {x: 13, y: 10}
-    layer: 2
-    localPosition: {x: 3.35, y: 1.75, z: -1}
-  - trayType: 1
-    trayColor: 3
-    originCell: {x: 1, y: 1}
-    layer: 2
-    localPosition: {x: -2.35, y: -2.75, z: -1}
-  - trayType: 1
-    trayColor: 7
-    originCell: {x: 1, y: 10}
-    layer: 2
-    localPosition: {x: -2.35, y: 1.75, z: -1}
+    localPosition: {x: -2.825, y: -0.5, z: 0}
   - trayType: 4
     trayColor: 2
-    originCell: {x: 6, y: 12}
-    layer: 1
-    localPosition: {x: 0.5, y: 2.5, z: 0}
-  - trayType: 4
-    trayColor: 1
     originCell: {x: 10, y: 12}
     layer: 1
     localPosition: {x: 2.4, y: 2.5, z: 0}
-  - trayType: 4
-    trayColor: 0
-    originCell: {x: 2, y: 12}
-    layer: 1
-    localPosition: {x: -1.4, y: 2.5, z: 0}
-  - trayType: 1
-    trayColor: 7
-    originCell: {x: 14, y: 11}
-    layer: 1
-    localPosition: {x: 3.825, y: 2.25, z: 0}
   - trayType: 2
-    trayColor: 0
-    originCell: {x: 14, y: 7}
+    trayColor: 3
+    originCell: {x: 14, y: 10}
     layer: 1
-    localPosition: {x: 3.825, y: 0.5, z: 0}
-  - trayType: 1
-    trayColor: 1
-    originCell: {x: 14, y: 4}
-    layer: 1
-    localPosition: {x: 3.825, y: -1.25, z: 0}
-  - trayType: 0
-    trayColor: 7
-    originCell: {x: 14, y: 2}
-    layer: 1
-    localPosition: {x: 3.825, y: -2.5, z: 0}
+    localPosition: {x: 3.825, y: 2, z: 0}
   - trayType: 3
-    trayColor: 1
+    trayColor: 0
     originCell: {x: 13, y: 0}
     layer: 1
     localPosition: {x: 3.5874999, y: -3.5, z: 0}
   - trayType: 4
-    trayColor: 0
-    originCell: {x: 9, y: 0}
-    layer: 1
-    localPosition: {x: 1.925, y: -3.5, z: 0}
-  - trayType: 3
-    trayColor: 3
-    originCell: {x: 6, y: 0}
-    layer: 1
-    localPosition: {x: 0.2625, y: -3.5, z: 0}
-  - trayType: 4
+    trayColor: 1
+    originCell: {x: 11, y: 1}
+    layer: 2
+    localPosition: {x: 2.875, y: -3, z: -1}
+  - trayType: 1
     trayColor: 2
-    originCell: {x: 2, y: 0}
+    originCell: {x: 9, y: 6}
+    layer: 2
+    localPosition: {x: 1.45, y: -0.25, z: -1}
+  - trayType: 3
+    trayColor: 2
+    originCell: {x: 13, y: 4}
     layer: 1
-    localPosition: {x: -1.4, y: -3.5, z: 0}
+    localPosition: {x: 3.5874999, y: -1.5, z: 0}
   - trayType: 1
     trayColor: 3
-    originCell: {x: 0, y: 11}
+    originCell: {x: 11, y: 5}
     layer: 1
-    localPosition: {x: -2.825, y: 2.25, z: 0}
+    localPosition: {x: 2.4, y: -0.75, z: 0}
   - trayType: 2
     trayColor: 1
-    originCell: {x: 0, y: 7}
+    originCell: {x: 4, y: 8}
     layer: 1
-    localPosition: {x: -2.825, y: 0.5, z: 0}
+    localPosition: {x: -0.92499995, y: 1, z: 0}
   - trayType: 2
-    trayColor: 7
+    trayColor: 3
+    originCell: {x: 13, y: 3}
+    layer: 2
+    localPosition: {x: 3.35, y: -1.5, z: -1}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 4, y: 8}
+    layer: 2
+    localPosition: {x: -0.6875, y: 0.5, z: -1}
+  - trayType: 1
+    trayColor: 2
+    originCell: {x: 1, y: 10}
+    layer: 2
+    localPosition: {x: -2.35, y: 1.75, z: -1}
+  - trayType: 0
+    trayColor: 0
+    originCell: {x: 2, y: 6}
+    layer: 1
+    localPosition: {x: -1.875, y: -0.5, z: 0}
+  - trayType: 2
+    trayColor: 1
+    originCell: {x: 5, y: 1}
+    layer: 2
+    localPosition: {x: -0.45, y: -2.5, z: -1}
+  - trayType: 2
+    trayColor: 0
+    originCell: {x: 4, y: 0}
+    layer: 1
+    localPosition: {x: -0.92499995, y: -3, z: 0}
+  - trayType: 1
+    trayColor: 2
+    originCell: {x: 11, y: 3}
+    layer: 2
+    localPosition: {x: 2.4, y: -1.75, z: -1}
+  - trayType: 3
+    trayColor: 0
+    originCell: {x: 8, y: 6}
+    layer: 1
+    localPosition: {x: 1.2125, y: -0.5, z: 0}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 13, y: 8}
+    layer: 1
+    localPosition: {x: 3.5874999, y: 0.5, z: 0}
+  - trayType: 0
+    trayColor: 2
+    originCell: {x: 9, y: 4}
+    layer: 1
+    localPosition: {x: 1.45, y: -1.5, z: 0}
+  - trayType: 2
+    trayColor: 2
+    originCell: {x: 6, y: 0}
+    layer: 1
+    localPosition: {x: 0.025000006, y: -3, z: 0}
+  - trayType: 1
+    trayColor: 2
     originCell: {x: 0, y: 3}
     layer: 1
-    localPosition: {x: -2.825, y: -1.5, z: 0}
+    localPosition: {x: -2.825, y: -1.75, z: 0}
+  - trayType: 3
+    trayColor: 0
+    originCell: {x: 8, y: 2}
+    layer: 1
+    localPosition: {x: 1.2125, y: -2.5, z: 0}
+  - trayType: 1
+    trayColor: 2
+    originCell: {x: 7, y: 3}
+    layer: 2
+    localPosition: {x: 0.5, y: -1.75, z: -1}
+  - trayType: 3
+    trayColor: 1
+    originCell: {x: 13, y: 6}
+    layer: 1
+    localPosition: {x: 3.5874999, y: -0.5, z: 0}
+  - trayType: 0
+    trayColor: 1
+    originCell: {x: 0, y: 8}
+    layer: 1
+    localPosition: {x: -2.825, y: 0.5, z: 0}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 7, y: 6}
+    layer: 2
+    localPosition: {x: 0.5, y: -0.25, z: -1}
+  - trayType: 0
+    trayColor: 1
+    originCell: {x: 11, y: 3}
+    layer: 1
+    localPosition: {x: 2.4, y: -2, z: 0}
+  - trayType: 0
+    trayColor: 3
+    originCell: {x: 2, y: 8}
+    layer: 1
+    localPosition: {x: -1.875, y: 0.5, z: 0}
+  - trayType: 2
+    trayColor: 3
+    originCell: {x: 1, y: 1}
+    layer: 2
+    localPosition: {x: -2.35, y: -2.5, z: -1}
+  - trayType: 4
+    trayColor: 0
+    originCell: {x: 6, y: 10}
+    layer: 1
+    localPosition: {x: 0.5, y: 1.5, z: 0}
   - trayType: 1
     trayColor: 0
     originCell: {x: 0, y: 0}
     layer: 1
     localPosition: {x: -2.825, y: -3.25, z: 0}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 13, y: 2}
+    layer: 1
+    localPosition: {x: 3.5874999, y: -2.5, z: 0}
+  - trayType: 4
+    trayColor: 1
+    originCell: {x: 10, y: 10}
+    layer: 1
+    localPosition: {x: 2.4, y: 1.5, z: 0}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 2, y: 12}
+    layer: 1
+    localPosition: {x: -1.6375, y: 2.5, z: 0}
+  - trayType: 0
+    trayColor: 3
+    originCell: {x: 0, y: 10}
+    layer: 1
+    localPosition: {x: -2.825, y: 1.5, z: 0}
+  - trayType: 4
+    trayColor: 1
+    originCell: {x: 7, y: 9}
+    layer: 2
+    localPosition: {x: 0.975, y: 1, z: -1}
+  - trayType: 2
+    trayColor: 2
+    originCell: {x: 3, y: 4}
+    layer: 2
+    localPosition: {x: -1.4, y: -1, z: -1}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 8, y: 0}
+    layer: 1
+    localPosition: {x: 1.2125, y: -3.5, z: 0}
+  - trayType: 1
+    trayColor: 3
+    originCell: {x: 2, y: 3}
+    layer: 1
+    localPosition: {x: -1.875, y: -1.75, z: 0}
+  - trayType: 3
+    trayColor: 3
+    originCell: {x: 7, y: 12}
+    layer: 1
+    localPosition: {x: 0.73749995, y: 2.5, z: 0}
+  - trayType: 1
+    trayColor: 2
+    originCell: {x: 11, y: 0}
+    layer: 1
+    localPosition: {x: 2.4, y: -3.25, z: 0}
+  - trayType: 0
+    trayColor: 0
+    originCell: {x: 11, y: 6}
+    layer: 2
+    localPosition: {x: 2.4, y: -0.5, z: -1}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 3, y: 10}
+    layer: 2
+    localPosition: {x: -1.4, y: 1.75, z: -1}
+  - trayType: 2
+    trayColor: 3
+    originCell: {x: 6, y: 6}
+    layer: 1
+    localPosition: {x: 0.025000006, y: 0, z: 0}
+  - trayType: 0
+    trayColor: 0
+    originCell: {x: 11, y: 8}
+    layer: 1
+    localPosition: {x: 2.4, y: 0.5, z: 0}
+  - trayType: 3
+    trayColor: 1
+    originCell: {x: 6, y: 4}
+    layer: 1
+    localPosition: {x: 0.2625, y: -1.5, z: 0}
+  - trayType: 3
+    trayColor: 1
+    originCell: {x: 8, y: 8}
+    layer: 1
+    localPosition: {x: 1.2125, y: 0.5, z: 0}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 3, y: 1}
+    layer: 2
+    localPosition: {x: -1.4, y: -2.75, z: -1}
+  - trayType: 1
+    trayColor: 1
+    originCell: {x: 2, y: 0}
+    layer: 1
+    localPosition: {x: -1.875, y: -3.25, z: 0}
+  - trayType: 1
+    trayColor: 1
+    originCell: {x: 5, y: 10}
+    layer: 2
+    localPosition: {x: -0.45, y: 1.75, z: -1}
+  - trayType: 3
+    trayColor: 1
+    originCell: {x: 1, y: 8}
+    layer: 2
+    localPosition: {x: -2.1125, y: 0.5, z: -1}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 1, y: 5}
+    layer: 2
+    localPosition: {x: -2.35, y: -0.75, z: -1}
+  - trayType: 1
+    trayColor: 0
+    originCell: {x: 5, y: 5}
+    layer: 2
+    localPosition: {x: -0.45, y: -0.75, z: -1}
+  - trayType: 2
+    trayColor: 0
+    originCell: {x: 13, y: 9}
+    layer: 2
+    localPosition: {x: 3.35, y: 1.5, z: -1}
+  - trayType: 0
+    trayColor: 1
+    originCell: {x: 9, y: 4}
+    layer: 2
+    localPosition: {x: 1.45, y: -1.5, z: -1}
+  - trayType: 0
+    trayColor: 1
+    originCell: {x: 11, y: 11}
+    layer: 2
+    localPosition: {x: 2.4, y: 2, z: -1}
+  - trayType: 0
+    trayColor: 2
+    originCell: {x: 2, y: 10}
+    layer: 1
+    localPosition: {x: -1.875, y: 1.5, z: 0}
+  - trayType: 0
+    trayColor: 3
+    originCell: {x: 7, y: 1}
+    layer: 2
+    localPosition: {x: 0.5, y: -3, z: -1}
+  - trayType: 0
+    trayColor: 2
+    originCell: {x: 5, y: 12}
+    layer: 1
+    localPosition: {x: -0.45, y: 2.5, z: 0}
+  - trayType: 0
+    trayColor: 2
+    originCell: {x: 0, y: 12}
+    layer: 1
+    localPosition: {x: -2.825, y: 2.5, z: 0}
+  - trayType: 1
+    trayColor: 3
+    originCell: {x: 11, y: 8}
+    layer: 2
+    localPosition: {x: 2.4, y: 0.75, z: -1}
+  - trayType: 2
+    trayColor: 2
+    originCell: {x: 4, y: 4}
+    layer: 1
+    localPosition: {x: -0.92499995, y: -1, z: 0}
   levelName: Level 3

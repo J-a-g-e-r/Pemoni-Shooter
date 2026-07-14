@@ -20,6 +20,8 @@ namespace RewardSystem
             Idle,
             WaitingTapToOpenChest,
             PlayingChestAnimation,
+            WaitingTapToOpenCard,
+            PlayingCardAnimation,
             WaitingTapToClaim
         }
 
@@ -41,6 +43,16 @@ namespace RewardSystem
         [SerializeField] private string chestOpenTrigger = "Open";
         [SerializeField] private string chestCloseTrigger = "Close";
         [SerializeField] private float chestAnimFallbackDuration = 1.0f; // dùng nếu không có Animation Event
+
+
+        [Header("Animation card")]
+        [SerializeField] private GameObject cardRoot;
+        [SerializeField] private Animator cardAnimator;   // Animator gắn trên mainIcon hoặc object card
+        [SerializeField] private string cardOpenTrigger = "Open";
+        [SerializeField] private string cardCloseTrigger = "Close";
+        [SerializeField] private float cardAnimFallbackDuration = 1.0f;
+
+
 
         private RewardManager manager;
         [System.NonSerialized] private RewardData currentReward;
@@ -67,9 +79,15 @@ namespace RewardSystem
                 SetTapCatcherEnabled(true);
                 tapToContinueText.text = "Tap to open";
             }
+            else if (reward.IsCard)
+            {
+                state = State.WaitingTapToOpenCard;
+                SetCardDisplay();
+                SetTapCatcherEnabled(true);
+                tapToContinueText.text = "Tap to open";
+            }
             else
             {
-                // Reward thường: hiện luôn, chờ tap để nhận
                 state = State.WaitingTapToClaim;
                 SetSingleDisplay(reward.icon, FormatAmount(reward));
                 SetTapCatcherEnabled(true);
@@ -91,6 +109,13 @@ namespace RewardSystem
 
                 // Trong lúc đang chạy animation thì bỏ qua tap
                 case State.PlayingChestAnimation:
+
+                case State.WaitingTapToOpenCard:
+                    PlayCardOpenAnimation();
+                    break;
+                case State.PlayingCardAnimation:
+                    break;
+
                 default:
                     break;
             }
@@ -153,6 +178,78 @@ namespace RewardSystem
             SetTapCatcherEnabled(true);
         }
 
+
+        private void PlayCardOpenAnimation()
+        {
+            state = State.PlayingCardAnimation;
+            SetTapCatcherEnabled(false);
+            AudioManager.Instance.PlaySFX("OpenChest"); // hoặc SFX riêng cho card
+            tapToContinueText.text = "";
+
+            if (cardAnimator != null)
+            {
+                cardAnimator.SetTrigger(cardOpenTrigger);
+                StartCoroutine(FallbackCardFinishTimer());
+            }
+            else
+            {
+                StartCoroutine(FallbackCardFinishTimer());
+            }
+        }
+
+        private IEnumerator FallbackCardFinishTimer()
+        {
+            yield return new WaitForSeconds(cardAnimFallbackDuration);
+            if (cardAnimator != null)
+                cardAnimator.SetTrigger(cardCloseTrigger);
+            if (state == State.PlayingCardAnimation)
+                OnCardAnimationFinished();
+        }
+
+        public void OnCardAnimationFinished()
+        {
+            if (state != State.PlayingCardAnimation) return;
+
+            var contents = currentReward.cardContents;
+            if (contents == null || contents.Count == 0)
+            {
+                ClaimAndClose();
+                return;
+            }
+
+            if (contents.Count == 1)
+            {
+                var item = contents[0];
+                SetSingleDisplay(item.icon, item.amount > 1 ? $"{item.amount}" : "");
+            }
+            else
+            {
+                ShowMultiRewardDisplay(contents);
+            }
+
+            state = State.WaitingTapToClaim;
+            tapToContinueText.text = "Tap to continue";
+            SetTapCatcherEnabled(true);
+        }
+
+        private void SetCardDisplay()
+        {
+            if (cardRoot != null)
+                cardRoot.SetActive(true);
+            if (chestRoot != null)
+                chestRoot.SetActive(false);
+
+            mainIcon.gameObject.SetActive(false);
+            amountText.gameObject.SetActive(false);
+            multiRewardContainer.gameObject.SetActive(false);
+
+            if (cardAnimator != null)
+            {
+                cardAnimator.Rebind();
+                cardAnimator.Update(0f);
+            }
+        }
+
         private void ClaimAndClose()
         {
             SetTapCatcherEnabled(false);
@@ -162,13 +259,17 @@ namespace RewardSystem
                 foreach (var item in currentReward.chestContents)
                     manager.NotifyRewardClaimed(item.ToRewardData());
             }
+            else if (currentReward.IsCard)
+            {
+                foreach (var item in currentReward.cardContents)
+                    manager.NotifyRewardClaimed(item.ToRewardData());
+            }
             else
             {
                 manager.NotifyRewardClaimed(currentReward);
             }
-
-            if (chestRoot != null)
-                chestRoot.SetActive(false);
+            if (chestRoot != null) chestRoot.SetActive(false);
+            if (cardRoot != null) cardRoot.SetActive(false);
 
             state = State.Idle;
             currentReward = null;
@@ -187,6 +288,7 @@ namespace RewardSystem
         {
             if (chestRoot != null)
                 chestRoot.SetActive(false);
+            if (cardRoot != null) cardRoot.SetActive(false);
             multiRewardContainer.gameObject.SetActive(false);
             mainIcon.gameObject.SetActive(true);
             mainIcon.sprite = icon;

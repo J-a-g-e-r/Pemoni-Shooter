@@ -9,6 +9,7 @@ namespace RewardSystem
         Coins,
         Gems,
         Chest,
+        Card,
         Booster,
         Ticket,
         Item,
@@ -55,7 +56,15 @@ namespace RewardSystem
         [Tooltip("Chỉ dùng khi type = Chest: phần thưởng bên trong (chỉ leaf, không lồng rương)")]
         [NonSerialized] public List<RewardEntry> chestContents = new List<RewardEntry>();
 
+        [Tooltip("Chỉ dùng khi type = Card: sprite card lúc đóng")]
+        public Sprite closedCardIcon;
+        [Tooltip("Chỉ dùng khi type = Card: phần thưởng bên trong")]
+        [NonSerialized] public List<RewardEntry> cardContents = new List<RewardEntry>();
+
         public bool IsChest => type == RewardType.Chest;
+        public bool IsCard => type == RewardType.Card;
+
+
 
         public RewardData() { }
 
@@ -70,13 +79,26 @@ namespace RewardSystem
         /// <summary>Loại bỏ phần thưởng lồng rương / tham chiếu lỗi trước khi grant.</summary>
         public static void Sanitize(RewardData reward)
         {
-            if (reward == null || !reward.IsChest || reward.chestContents == null) return;
+            if (reward == null) return;
 
-            for (int i = reward.chestContents.Count - 1; i >= 0; i--)
+            if (reward.IsChest && reward.chestContents != null)
             {
-                var entry = reward.chestContents[i];
-                if (entry == null || entry.type == RewardType.Chest)
-                    reward.chestContents.RemoveAt(i);
+                for (int i = reward.chestContents.Count - 1; i >= 0; i--)
+                {
+                    var entry = reward.chestContents[i];
+                    if (entry == null || entry.type == RewardType.Chest || entry.type == RewardType.Card)
+                        reward.chestContents.RemoveAt(i);
+                }
+            }
+
+            if (reward.IsCard && reward.cardContents != null)
+            {
+                for (int i = reward.cardContents.Count - 1; i >= 0; i--)
+                {
+                    var entry = reward.cardContents[i];
+                    if (entry == null || entry.type == RewardType.Chest || entry.type == RewardType.Card)
+                        reward.cardContents.RemoveAt(i);
+                }
             }
         }
     }

@@ -204,10 +204,7 @@ namespace RewardSystem
 
         private void ShowRewardedAd(Action onSuccess, Action onFailed)
         {
-            if (simulateAdSuccess)
-                onSuccess?.Invoke();
-            else
-                onFailed?.Invoke();
+            AdMobManager.Instance.ShowRewarded(onSuccess, onFailed);
         }
 
         // ---------- 24h cycle ----------

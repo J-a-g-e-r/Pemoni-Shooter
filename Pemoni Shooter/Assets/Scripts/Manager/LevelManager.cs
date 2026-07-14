@@ -54,6 +54,8 @@ public class LevelManager : SingletonPersistent<LevelManager>
 
         PlayerPrefs.SetInt(PrefKey, CurrentLevel);
         PlayerPrefs.Save();
+
+        MissionManager.Instance?.AddProgress(MissionType.CompleteLevels, 1);
     }
 
     public void LoadMainScene() => SceneManager.LoadScene("MainScene");

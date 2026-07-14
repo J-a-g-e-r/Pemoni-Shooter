@@ -76,7 +76,7 @@ namespace RewardSystem
             if (!unlocked)
             {
                 actionButton.interactable = false;
-                buttonText.text = "Locked";
+                buttonText.text = "Free";
                 return;
             }
 

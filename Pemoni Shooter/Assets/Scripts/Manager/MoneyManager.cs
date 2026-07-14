@@ -80,6 +80,8 @@ public class MoneyManager : SingletonPersistent<MoneyManager>
     public void OnTrayCompleted(Transform trayTransform, int amount = -1)
     {
         int reward = amount > 0 ? amount : _moneyPerTray;
+        MissionManager.Instance?.AddProgress(MissionType.CollectCoins, reward);
+
 
         if (CanPlayFlyAnim())
             SpawnAndFlyCoin(trayTransform.position, reward);

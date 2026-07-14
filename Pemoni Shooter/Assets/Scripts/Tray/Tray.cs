@@ -133,6 +133,8 @@ public class Tray : MonoBehaviour
     {
         _filledCount++;
         cup.transform.SetParent(transform); // Cup là con của Tray
+        MissionManager.Instance?.AddProgress(MissionType.CollectCups, 1);
+
 
         if (IsTrayFull)
         {
@@ -239,7 +241,7 @@ public class Tray : MonoBehaviour
         }
 
         TutorialManager.Instance?.OnTrayClicked(this);
-        Debug.Log($"Clicked on Tray at cell: {OriginCell} of type: {TrayType} color: {TrayColor}");
+        //Debug.Log($"Clicked on Tray at cell: {OriginCell} of type: {TrayType} color: {TrayColor}");
     }
 
     // -------------------------------------------------------

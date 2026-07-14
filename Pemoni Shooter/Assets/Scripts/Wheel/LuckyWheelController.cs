@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RewardSystem;
 using System.Collections.Generic;
+using TMPro;
 
 public class LuckyWheelController : MonoBehaviour
 {
@@ -58,6 +59,58 @@ public class LuckyWheelController : MonoBehaviour
 
     private bool isSpinning = false;
 
+    [Header("Cooldown")]
+    [SerializeField] private float freeSpinCooldown = 1800f; //30 phút
+
+    [SerializeField] private TMP_Text timerText;
+
+    [SerializeField] private TMP_Text buttonText;
+
+    private const string NextFreeSpinKey = "LuckyWheel_NextFreeSpin";
+
+
+    private void Update()
+    {
+        RefreshUI();
+    }
+
+    private DateTime GetNextFreeSpinTime()
+    {
+        if (!PlayerPrefs.HasKey(NextFreeSpinKey))
+            return DateTime.MinValue;
+
+        long binary = Convert.ToInt64(PlayerPrefs.GetString(NextFreeSpinKey));
+        return DateTime.FromBinary(binary);
+    }
+
+    private void SaveNextFreeSpinTime(DateTime time)
+    {
+        PlayerPrefs.SetString(NextFreeSpinKey, time.ToBinary().ToString());
+        PlayerPrefs.Save();
+    }
+
+    private bool IsFreeSpinReady()
+    {
+        return DateTime.UtcNow >= GetNextFreeSpinTime();
+    }
+
+    private void RefreshUI()
+    {
+        if (IsFreeSpinReady())
+        {
+            timerText.text = "FREE";
+            buttonText.text = "SPIN";
+        }
+        else
+        {
+            TimeSpan remain = GetNextFreeSpinTime() - DateTime.UtcNow;
+
+            timerText.text =
+                $"{remain.Minutes:00}:{remain.Seconds:00}";
+
+            buttonText.text = "Ads";
+        }
+    }
     /// <summary>
     /// Call this from the Spin button's OnClick().
     /// </summary>
@@ -65,16 +118,24 @@ public class LuckyWheelController : MonoBehaviour
     {
         if (isSpinning) return;
 
-        if (slots == null || slots.Length == 0)
+        if (IsFreeSpinReady())
         {
-            Debug.LogError("[LuckyWheelController] No slots configured.");
-            return;
+            StartSpin();
+        }
+        else
+        {
+            AdMobManager.Instance?.ShowRewarded(
+                onSuccess: StartSpin,
+                onFailed: () => { });
         }
 
+    }
+
+    private void StartSpin()
+    {
         int targetIndex = ChooseWeightedRandomIndex();
         SpinMarkerTo(targetIndex);
     }
-
     /// <summary>
     /// Weighted random selection. Swap the body of this method for a server-authoritative
     /// call if you want the backend to decide the result (recommended for anti-cheat).
@@ -185,6 +246,7 @@ public class LuckyWheelController : MonoBehaviour
         RewardData.Sanitize(reward);
         RewardManager.Instance?.GrantReward(reward);
         OnRewardGranted?.Invoke(slot);
+        SaveNextFreeSpinTime(DateTime.UtcNow.AddSeconds(freeSpinCooldown));
     }
 
 #if UNITY_EDITOR
